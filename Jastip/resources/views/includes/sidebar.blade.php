@@ -1,6 +1,8 @@
-<h1 class="my-4">Shop Name</h1>
-<div class="list-group">
-    <a href="#" class="list-group-item">Category 1</a>
-    <a href="#" class="list-group-item">Category 2</a>
-    <a href="#" class="list-group-item">Category 3</a>
+<div class="card my-4">
+  <div class="card-header bg-light">
+    Category
+  </div>
+    <a href="#" class="list-group-item border-0">Food & Drink</a>
+    <a href="#" class="list-group-item border-0">Clothes</a>
+    <a href="#" class="list-group-item border-0">Games</a>
 </div>
