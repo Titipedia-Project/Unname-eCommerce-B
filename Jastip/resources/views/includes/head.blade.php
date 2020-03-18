@@ -6,3 +6,4 @@
 
 <!-- load bootstrap from a cdn -->
 <link href="{{ asset('bootstrap/bootstrap.css') }}" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
