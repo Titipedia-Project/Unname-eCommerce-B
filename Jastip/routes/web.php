@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,6 @@ Auth::routes();
 
 Route::get('/profile', 'HomeController@index')->name('pages/home');
 
+//Produk
+Route::get('/produk', 'ProductsController@index');
+Route::get('/produk/{product}', 'ProductsController@show');
