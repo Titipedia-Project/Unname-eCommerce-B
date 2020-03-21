@@ -14,7 +14,7 @@ class CreatePenawaransTable extends Migration
     public function up()
     {
         Schema::create('penawarans', function (Blueprint $table) {
-            $table->id('id_penawaran');
+            $table->id();
             $table->timestamps();
             $table->integer('harga_jasa');
             $table->integer('harga_produk');

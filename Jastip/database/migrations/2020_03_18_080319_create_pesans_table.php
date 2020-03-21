@@ -14,7 +14,7 @@ class CreatePesansTable extends Migration
     public function up()
     {
         Schema::create('pesans', function (Blueprint $table) {
-            $table->id('id_pesans');
+            $table->id();
             $table->timestamps();
             $table->string('isi_pesan');
             $table->dateTime('waktu_kirim');

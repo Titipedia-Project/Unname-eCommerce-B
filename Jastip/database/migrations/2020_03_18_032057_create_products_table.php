@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('id_produk');
+            $table->id();
             $table->timestamps();
             $table->string('nama');
             $table->enum('jenis_produk', ['bulk', 'normal']);
