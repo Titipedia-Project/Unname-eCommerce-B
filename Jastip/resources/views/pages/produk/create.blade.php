@@ -85,7 +85,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+                        <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
                     </div>
                 </div>
                 <div class="form-group row pull-right">
