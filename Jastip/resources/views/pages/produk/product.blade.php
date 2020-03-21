@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-md-4">
-                    <a href="" class="btn btn-success">Tambah Data</a>
+                    <a href="produk/create" class="btn btn-success">Tambah Data</a>
                 </div>
             </div>
             <div class="mt-3">
@@ -35,7 +35,7 @@
                             <td>{{$data->harga_jasa}}</td>
                             <td>{{$data->harga_produk}}</td>
                             <td>{{$data->berat}}</td>
-                            <td><a href="/produk/1" class="badge badge-primary">detail</a>
+                            <td><a href="/produk/{{$data->id}}" class="badge badge-primary">detail</a>
                                 <a href="" class="badge badge-success">edit</a>
                                 <a href="" class="badge badge-danger">delete</a>
                             </td>

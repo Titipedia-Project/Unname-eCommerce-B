@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductsController extends Controller
         /*if ($request->ajax()) {
             return datatables()->of($product)->make(true);
         }*/
-        return view('pages.product', ['product' => $product]);
+        return view('pages.produk.product', ['product' => $product]);
     }
 
     /**
@@ -32,6 +33,7 @@ class ProductsController extends Controller
     public function create()
     {
         //
+        return view('pages.produk.create');
     }
 
     /**
@@ -42,7 +44,35 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
+        $request->file('gambar')->move("produk_images/", strval($id) . "_produk.jpg"); //penamaan yg bukan array, penamaan array ada di registercontroller
+        $filename = $id . '_produk.jpg';
+        //cara 1
+        // $product = new Product;
+        // $product->nama = $request->nama_produk;
+        // $product->jenis_produk = $request->jenis_produk;
+        // $product->stok = $request->stok;
+        // $product->harga_jasa = $request->harga_jasa;
+        // $product->harga_produk = $request->harga_produk;
+        // $product->berat = $request->berat;
+        // $product->keterangan = $request->keterangan;
+        // $product->gambar = $request->gambar;
+        // $product->save();
+
+        //cara 2
+        Product::create([
+            'nama' => $request->nama_produk,
+            'jenis_produk' => $request->jenis_produk,
+            'stok' => $request->stok,
+            'harga_jasa' => $request->harga_jasa,
+            'harga_produk' => $request->harga_produk,
+            'berat' => $request->berat,
+            'keterangan' => $request->keterangan,
+            'id_user' => $request->id_user,
+            'gambar' => $filename
+
+        ]);
+        return redirect('produk');
     }
 
     /**
@@ -54,7 +84,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         //
-        //return $product;
+        return view('pages.produk.show', compact('product'));
     }
 
     /**

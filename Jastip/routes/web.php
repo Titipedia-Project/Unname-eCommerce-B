@@ -27,4 +27,6 @@ Route::get('/profile', 'HomeController@index')->name('pages/home');
 
 //Produk
 Route::get('/produk', 'ProductsController@index');
-Route::get('/produk/{product}', 'ProductsController@show');
+Route::get('/produk/create', 'ProductsController@create');
+Route::get('/produk/{product}', 'ProductsController@show'); // harus dibawwah, krn kalau diatas akan dibaca menampilkan produk yg idnya create
+Route::post('/produk', 'ProductsController@store');
