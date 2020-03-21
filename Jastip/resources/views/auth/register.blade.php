@@ -97,7 +97,7 @@
 
                             <div class="col-md-6">
                                 <input class="date form-control" id="date_of_birth" class="form-control"
-                                    name="date_of_birth" type="text">
+                                    name="date_of_birth" type="text" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -130,7 +130,7 @@
                         <div class="form-group row">
                             <label for="filePhoto" class="col-sm-4 col-form-label text-right">Upload Photo</label>
                             <div class="col-sm-8" id="addBrowsePhoto">
-                                <input type="file" id="photo_profile" name="photo_profile" class="validate" required />
+                                <input type="file" id="photo_profile" name="photo_profile" class="validate" placeholder="optional"/>
                                 <img src="" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
                             </div>
                         </div>
