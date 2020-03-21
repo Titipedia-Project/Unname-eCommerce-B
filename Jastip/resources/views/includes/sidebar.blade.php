@@ -2,7 +2,7 @@
   <div class="card-header bg-light">
     Category
   </div>
-    <a href="#" class="list-group-item border-0">Food & Drink</a>
-    <a href="#" class="list-group-item border-0">Clothes</a>
-    <a href="#" class="list-group-item border-0">Games</a>
+  @foreach($kategoris as $data)
+  <a href="#" class="list-group-item border-0">{{$data->nama_kategori}}</a>
+  @endforeach
 </div>
