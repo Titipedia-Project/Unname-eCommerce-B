@@ -54,6 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:1', 'confirmed'],
         ]);
     }
@@ -69,21 +70,19 @@ class RegisterController extends Controller
         
         $id = DB::table('users')->orderBy('id', 'desc')->first()->id + 1;
     
-        $data->file('photo_profile')->move("photo_profile/", strval($id) . "_A");
+        $data['photo_profile']->move("photo_profile/", strval($id) . "_photo.jpg");
         
-        
-        
-        
+        $filename = $id . '_photo.jpg';
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'jenis_kelamin' => $data['sex'],
             'tempat_lahir' => $data['place_of_birth'],
-            'tanggal_lahir' => $data['date_of_birth'],
+            'tanggal_lahir' => date($data['date_of_birth']),
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
-            'foto' => $data['photo_profile']
+            'foto' => $filename
             
         ]);
     }

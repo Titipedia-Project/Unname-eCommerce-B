@@ -8,14 +8,15 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -26,10 +27,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email"
+                                class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -38,12 +41,30 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="username"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                                    name="username" value="{{ old('username') }}" required autocomplete="username">
+
+                                @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    required autocomplete="new-password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -53,57 +74,64 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control"
+                                    name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="place_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Place of Birth') }}</label>
+                            <label for="place_of_birth"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Place of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="place_of_birth" type="text" class="form-control" name="place_of_birth" value="{{ old('place_of_birth') }}" required autocomplete="place_of_birth">
+                                <input id="place_of_birth" type="text" class="form-control" name="place_of_birth"
+                                    value="{{ old('place_of_birth') }}" required autocomplete="place_of_birth">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+                            <label for="date_of_birth"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date_of_birth" type="text" class="form-control" name="date_of_birth" value="{{ old('date_of_birth') }}" autocomplete="date_of_births">
+                                <input class="date form-control" id="date_of_birth" class="form-control"
+                                    name="date_of_birth" type="text">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <label for="alamat"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat">
+                                <input id="alamat" type="text" class="form-control" name="alamat"
+                                    value="{{ old('alamat') }}" required autocomplete="alamat">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="no_hp" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+                            <label for="no_hp"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="no_hp" type="text" class="form-control" name="no_hp" value="{{ old('no_hp') }}" required autocomplete="no_hp">
+                                <input id="no_hp" type="text" class="form-control" name="no_hp"
+                                    value="{{ old('no_hp') }}" required autocomplete="no_hp">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
                             <div class="col-md-6">
-                            <select id="sex" name="sex" class="form-control">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
+                                <select id="sex" name="sex" class="form-control">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            
-                            <div class="form-group row">
-                                <label for="filePhoto" class="col-sm-4 col-form-label text-right">Upload Photo</label>
-                                <div class="col-sm-8" id="addBrowsePhoto">
-                                    <input type="file" id="photo_profile" name="photo_profile" class="validate" required/>
-                                    <img src="" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
-                                </div>
+                            <label for="filePhoto" class="col-sm-4 col-form-label text-right">Upload Photo</label>
+                            <div class="col-sm-8" id="addBrowsePhoto">
+                                <input type="file" id="photo_profile" name="photo_profile" class="validate" required />
+                                <img src="" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
                             </div>
                         </div>
 
@@ -120,4 +148,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('.date').datepicker({  
+       format: 'yyyy-mm-dd'
+     });  
+</script>
 @endsection
