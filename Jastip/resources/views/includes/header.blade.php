@@ -1,10 +1,12 @@
 <nav style="background-color: #65587f;" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand text-light" href="#">
-            <img src="{{ asset('images/titipedia.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="{{ asset('images/titipedia.png') }}" width="30" height="30" class="d-inline-block align-top"
+                alt="">
             Titipedia
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <form class="mx-2 my-auto d-inline w-100">
@@ -20,15 +22,37 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
+                @guest
+
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/register">Register</a>
+                </li>
+
+                @else
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="#">Order</a>
+                    <a class="nav-link text-light">Order</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Login</a>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Register</a>
-                </li>
+                @endguest
             </ul>
         </div>
     </div>
