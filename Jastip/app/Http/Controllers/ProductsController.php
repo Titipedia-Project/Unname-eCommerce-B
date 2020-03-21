@@ -44,6 +44,18 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        //validation
+        $request->validate([
+            'nama_produk' => 'required',
+            'jenis_produk' => 'required',
+            'stok' => 'required',
+            'harga_jasa' => 'required',
+            'harga_produk' => 'required',
+            'berat' => 'required',
+            'gambar' => 'required'
+        ]);
+
+        //penamaan gambar/foto
         $id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
         $request->file('gambar')->move("produk_images/", strval($id) . "_produk.jpg"); //penamaan yg bukan array, penamaan array ada di registercontroller
         $filename = $id . '_produk.jpg';
@@ -70,9 +82,10 @@ class ProductsController extends Controller
             'keterangan' => $request->keterangan,
             'id_user' => $request->id_user,
             'gambar' => $filename
-
         ]);
-        return redirect('produk');
+        //cara 3
+        //Product::create($request->all());//all akan mengambil semua data fillable yang ada di model product
+        return redirect('produk')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**
