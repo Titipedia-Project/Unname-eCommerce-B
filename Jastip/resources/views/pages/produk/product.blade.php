@@ -11,6 +11,11 @@
                     <a href="produk/create" class="btn btn-success">Tambah Data</a>
                 </div>
             </div>
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @endif
             <div class="mt-3">
                 <table id="tableProduct" class="table table-striped table-bordered table-hover">
                     <thead>
