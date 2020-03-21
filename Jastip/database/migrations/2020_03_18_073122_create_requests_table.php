@@ -14,7 +14,7 @@ class CreateRequestsTable extends Migration
     public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
-            $table->id('id_request');
+            $table->id();
             $table->timestamps();
             $table->string('nama');
             $table->integer('jumlah');

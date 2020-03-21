@@ -14,7 +14,7 @@ class CreateNotifikasisTable extends Migration
     public function up()
     {
         Schema::create('notifikasis', function (Blueprint $table) {
-            $table->id('id_notifikasi');
+            $table->id();
             $table->timestamps();
             $table->string('isi_notifikasi');
             $table->dateTime('waktu_kirim');
