@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.fullview')
 @section('content')
 <div class="container">
     <div class="card">
@@ -21,8 +21,21 @@
                     <label for="jenis_produk" class="col-sm-2 col-form-label">Jenis Produk</label>
                     <div class="col-sm-10">
                         <select class="custom-select @error('jenis_produk') is-invalid @enderror" id="jenis_produk" name="jenis_produk" value="{{old('jenis_produk')}}">
-                            <option selected value="normal">Normal Buy</option>
+                            <option value="normal">Normal Buy</option>
                             <option value="bulk">Bulk Buy</option>
+                        </select>
+                        @error('jenis_produk')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="jenis_produk" class="col-sm-2 col-form-label">Kategori Produk</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select @error('jenis_produk') is-invalid @enderror" id="jenis_produk" name="nama_kategori" value="{{old('jenis_produk')}}">
+                            @foreach($kategoris as $key => $data)
+                            <option value="{{$key}}">{{$data->nama_kategori}}</option>
+                            @endforeach
                         </select>
                         @error('jenis_produk')
                         <div class="invalid-feedback">{{$message}}</div>

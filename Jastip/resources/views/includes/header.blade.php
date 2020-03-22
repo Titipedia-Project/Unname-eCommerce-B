@@ -1,6 +1,6 @@
 <nav style="background-color: #65587f;" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand text-light" href="#">
+        <a class="navbar-brand text-light" href="/home">
             <img src="{{ asset('images/titipedia.png') }}" width="30" height="30" class="d-inline-block align-top"
                 alt="">
             Titipedia
@@ -51,6 +51,7 @@
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
+                        <a class="dropdown-item" href="/produk">Profile</a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

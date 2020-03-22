@@ -1,6 +1,6 @@
-@extends('layouts.default')
+@extends('layouts.profileview')
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="card">
         <div class="card-header">
             <h3>Data Produk</h3>

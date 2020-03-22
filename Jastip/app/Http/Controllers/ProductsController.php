@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Contracts\DataTable;
+use Auth;
+
 
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,19 +25,19 @@ class ProductsController extends Controller
     {
         //
         //
-        $product = Product::all();
-        $kategoris = DB::table('kategoris')->get();
-
+        $product = DB::table('products')
+            ->join('users', function($join) {
+                $join->on('products.id_user', '=', 'users.id')
+                ->where('users.id', '=', Auth::user()->id);
+            })
+            ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
+            ->select('products.*', 'users.name', 'kategoris.nama_kategori')
+            ->get();
         //jika ingin load per 10(sementara load all)
         /*if ($request->ajax()) {
             return datatables()->of($product)->make(true);
         }*/
-<<<<<<< HEAD
-        
-=======
-        $kategoris = DB::table('kategoris')->get();
->>>>>>> 7d3277453ab8036d199af4e4cf4e7052531022a7
-        return view('pages.produk.product', compact('product', 'kategoris'));
+        return view('pages.produk.product', compact('product'));
     }
 
     /**
@@ -41,7 +48,9 @@ class ProductsController extends Controller
     public function create()
     {
         //
-        return view('pages.produk.create');
+        $kategoris = DB::table('kategoris')->get();
+
+        return view('pages.produk.create', compact('kategoris'));
     }
 
     /**
@@ -89,6 +98,7 @@ class ProductsController extends Controller
             'berat' => $request->berat,
             'keterangan' => $request->keterangan,
             'id_user' => $request->id_user,
+            'id_kategori' => $request->nama_kategori,
             'gambar' => $filename
         ]);
         //cara 3
