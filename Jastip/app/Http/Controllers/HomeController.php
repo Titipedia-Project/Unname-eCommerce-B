@@ -23,8 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $produks = DB::table('products')->get();
         $kategoris = DB::table('kategoris')->get();
+
+        $produks = DB::table('products')
+            ->join('users', 'users.id', '=', 'products.id_user')
+            ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
+            ->select('products.*', 'users.name', 'kategoris.nama_kategori')
+            ->get();
+
         return view('pages.home', compact('produks', 'kategoris'));
     }
 }
