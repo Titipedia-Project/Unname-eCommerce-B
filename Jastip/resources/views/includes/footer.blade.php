@@ -3,6 +3,6 @@
 
 <script>
     $(document).ready(function() {
-        $('#tableProduct').DataTable();
+        $('#table_product').DataTable();
     });
 </script>

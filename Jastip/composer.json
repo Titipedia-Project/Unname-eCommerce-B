@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "mbezhanov/faker-provider-collection": "^1.2",
-        "yajra/laravel-datatables-oracle": "^9.9"
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

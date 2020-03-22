@@ -25,7 +25,11 @@ class ProductsController extends Controller
         /*if ($request->ajax()) {
             return datatables()->of($product)->make(true);
         }*/
+<<<<<<< HEAD
         
+=======
+        $kategoris = DB::table('kategoris')->get();
+>>>>>>> 7d3277453ab8036d199af4e4cf4e7052531022a7
         return view('pages.produk.product', compact('product', 'kategoris'));
     }
 
@@ -113,6 +117,7 @@ class ProductsController extends Controller
     public function edit(Product $product)
     {
         //
+        return view('pages.produk.edit', compact('product'));
     }
 
     /**
@@ -124,7 +129,23 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
+        $request->file('gambar')->move("produk_images/", strval($id) . "_produk.jpg"); //penamaan yg bukan array, penamaan array ada di registercontroller
+        $filename = $id . '_produk.jpg';
         //
+        Product::where('id', $product->id)
+            ->update([
+                'nama' => $request->nama_produk,
+                'jenis_produk' => $request->jenis_produk,
+                'stok' => $request->stok,
+                'harga_jasa' => $request->harga_jasa,
+                'harga_produk' => $request->harga_produk,
+                'berat' => $request->berat,
+                'keterangan' => $request->keterangan,
+                'id_user' => $request->id_user,
+                'gambar' => $filename
+            ]);
+        return redirect('produk')->with('status', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -136,5 +157,7 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         //
+        Product::destroy($product->id);
+        return redirect('produk')->with('status', 'Data Produk Berhasil Dihapus!');
     }
 }
