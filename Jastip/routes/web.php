@@ -28,3 +28,6 @@ Route::get('/produk', 'ProductsController@index');
 Route::get('/produk/create', 'ProductsController@create');
 Route::get('/produk/{product}', 'ProductsController@show'); // harus dibawwah, krn kalau diatas akan dibaca menampilkan produk yg idnya create
 Route::post('/produk', 'ProductsController@store');
+Route::delete('/produk/{product}', 'ProductsController@destroy');
+Route::get('/produk/{product}/edit', 'ProductsController@edit');
+Route::patch('/produk/{product}', 'ProductsController@update');

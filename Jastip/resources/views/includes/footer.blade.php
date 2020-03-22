@@ -5,6 +5,6 @@
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#tableProduct').DataTable();
+        $('#table_product').DataTable();
     });
 </script>

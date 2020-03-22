@@ -7,7 +7,7 @@
 <!-- load bootstrap from a cdn -->
 <link href="{{ asset('bootstrap/bootstrap.css') }}" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src={{asset('js/app.js')}}></script>
 
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
