@@ -29,7 +29,7 @@ class HomeController extends Controller
             ->join('users', 'users.id', '=', 'products.id_user')
             ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
             ->select('products.*', 'users.name', 'kategoris.nama_kategori')
-            ->get();
+            ->take(8)->get();
 
         return view('pages.home', compact('produks', 'kategoris'));
     }

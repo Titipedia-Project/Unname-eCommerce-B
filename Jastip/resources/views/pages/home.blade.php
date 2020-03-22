@@ -32,11 +32,10 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
+<h3>Produk Terbaru</h3>
 <div class="row">
+    
     @foreach($produks as $data)
-
-
     <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
             <a href="#"><img class="card-img-top" src="produk_images/{{$data->gambar}}" alt=""></a>

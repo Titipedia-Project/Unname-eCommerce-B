@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Contracts\DataTable;
 
 class ProductsController extends Controller
 {
@@ -18,11 +19,14 @@ class ProductsController extends Controller
         //
         //
         $product = Product::all();
+        $kategoris = DB::table('kategoris')->get();
+
         //jika ingin load per 10(sementara load all)
         /*if ($request->ajax()) {
             return datatables()->of($product)->make(true);
         }*/
-        return view('pages.produk.product', ['product' => $product]);
+        
+        return view('pages.produk.product', compact('product', 'kategoris'));
     }
 
     /**
