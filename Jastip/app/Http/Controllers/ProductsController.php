@@ -139,6 +139,15 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $request->validate([
+            'nama_produk' => 'required',
+            'jenis_produk' => 'required',
+            'stok' => 'required',
+            'harga_jasa' => 'required',
+            'harga_produk' => 'required',
+            'berat' => 'required',
+            'gambar' => 'required'
+        ]);
         $id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
         $request->file('gambar')->move("produk_images/", strval($id) . "_produk.jpg"); //penamaan yg bukan array, penamaan array ada di registercontroller
         $filename = $id . '_produk.jpg';

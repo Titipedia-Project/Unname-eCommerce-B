@@ -31,3 +31,7 @@ Route::post('/produk', 'ProductsController@store');
 Route::delete('/produk/{product}', 'ProductsController@destroy');
 Route::get('/produk/{product}/edit', 'ProductsController@edit');
 Route::patch('/produk/{product}', 'ProductsController@update');
+
+//User
+Route::post('/topup', 'UserController@update');
+Route::get('/Profile/{profile}/edit', 'UserController@edit');
