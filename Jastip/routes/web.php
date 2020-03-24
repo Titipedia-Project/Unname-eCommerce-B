@@ -35,3 +35,6 @@ Route::patch('/produk/{product}', 'ProductsController@update');
 //User
 Route::post('/topup', 'UserController@update');
 Route::get('/Profile/{profile}/edit', 'UserController@edit');
+
+//Order
+Route::get('/order/{order}', 'OrderController@show');
