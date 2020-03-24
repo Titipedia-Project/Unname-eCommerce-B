@@ -1,8 +1,8 @@
 <div class="card my-4">
   <div class="card-header bg-light mt-3">
-    
+
     <div class="card bg-light border-0 text-left">
-    <img width="140" height="140" src="{{ asset('photo_profile/'. Auth::user()->foto) }} " class="rounded-circle mx-auto" alt="...">
+      <img width="140" height="140" src="{{ asset('photo_profile/'. Auth::user()->foto) }} " class="rounded-circle mx-auto" alt="...">
       <div class="card-body">
         <h3 class="text-center" class="card-title">{{Auth::user()->name}}</h3>
         <p class="card-text"><i class="	fas fa-user-circle"></i> {{Auth::user()->name}}</p>
@@ -31,7 +31,7 @@
           @csrf
           <div class="form-group">
             <label for="exampleFormControlInput1">Jumlah Top Up</label>
-            <input type="text" name="saldo_baru" class="form-control" id="exampleFormControlInput1" placeholder="Jumlah Top Up">
+            <input type="number" name="saldo_baru" class="form-control" id="exampleFormControlInput1" placeholder="Jumlah Top Up">
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Pilih Metode</label>
@@ -47,16 +47,16 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
+              <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
             </div>
-        </div>
-        
+          </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>
