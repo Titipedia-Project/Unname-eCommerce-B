@@ -23,8 +23,7 @@ class CreatePreordersTable extends Migration
             $table->date('tanggal_penjualan');
             $table->date('tanggal_pengiriman')->nullable();
             $table->string('nomor_resi');
-            $table->enum('proses', ['menunggu', 'dikirim', 'diterima', 'selesai']);
-            $table->enum('pencairan', ['belum', 'sudah']);
+            $table->enum('status_order', ['menunggu', 'dikirim', 'diterima', 'selesai']);
             $table->integer('id_penjual');
             $table->integer('id_pembeli');
         });

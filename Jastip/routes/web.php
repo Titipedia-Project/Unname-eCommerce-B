@@ -40,3 +40,6 @@ Route::post('/request', 'ReqController@store');
 //User
 Route::post('/topup', 'UserController@update');
 Route::get('/Profile/{profile}/edit', 'UserController@edit');
+
+//Order
+Route::get('/order/{order}', 'OrderController@show');
