@@ -32,6 +32,11 @@ Route::delete('/produk/{product}', 'ProductsController@destroy');
 Route::get('/produk/{product}/edit', 'ProductsController@edit');
 Route::patch('/produk/{product}', 'ProductsController@update');
 
+//request
+Route::get('/request', 'ReqController@index');
+Route::get('/request/createreq', 'ReqController@create');
+Route::post('/request', 'ReqController@store');
+
 //User
 Route::post('/topup', 'UserController@update');
 Route::get('/Profile/{profile}/edit', 'UserController@edit');

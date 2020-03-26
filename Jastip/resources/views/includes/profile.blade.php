@@ -1,3 +1,4 @@
+
 <div class="card my-4 shadow-lg p-3 mb-5 bg-white rounded border-0">
   <div class="card-header bg-white mt-3">
     
@@ -31,7 +32,7 @@
           @csrf
           <div class="form-group">
             <label for="exampleFormControlInput1">Jumlah Top Up</label>
-            <input type="text" name="saldo_baru" class="form-control" id="exampleFormControlInput1" placeholder="Jumlah Top Up">
+            <input type="number" name="saldo_baru" class="form-control" id="exampleFormControlInput1" placeholder="Jumlah Top Up">
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect1">Pilih Metode</label>
@@ -47,16 +48,16 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-10">
-                <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
+              <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
             </div>
-        </div>
-        
+          </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>

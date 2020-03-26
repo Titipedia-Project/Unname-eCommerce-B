@@ -90,7 +90,7 @@
                     <label for="gambar" class="col-sm-2 col-form-label">Pilih Banner</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control-file @error('gambar') is-invalid @enderror" id="gambar" name="gambar" value="{{old('gambar')}}">
-                        @error('berat')
+                        @error('gambar')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
@@ -100,9 +100,14 @@
                         <input type="text" hidden name="id_user" value="{{Auth::user()->id}}">
                     </div>
                 </div>
-                <div class="form-group row pull-right">
+                <div class="form-group row pull-right d-inline p-2">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Tambah Data</button>
+                        <a href="/produk" class="btn btn-primary">Kembali</a>
+                    </div>
+                </div>
+                <div class="form-group row pull-right p-2">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success" style="background-color: #65587f; border: hidden">Tambah Data</button>
                     </div>
                 </div>
             </form>
