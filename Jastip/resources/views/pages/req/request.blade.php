@@ -11,8 +11,16 @@
                     <a href="request/createreq" class="btn btn-success" style="background-color: #65587f; border: hidden">Tambah Data Request</a>
                 </div>
             </div>
-            @if (session('status'))
+            @if (session('status')==="Data Berhasil Ditambahkan!")
             <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @elseif (session('status')==="Data Request Order Berhasil Diubah!")
+            <div class="alert alert-primary">
+                {{ session('status') }}
+            </div>
+            @elseif (session('status')==="Data Request Order Berhasil Dihapus!")
+            <div class="alert alert-danger">
                 {{ session('status') }}
             </div>
             @endif
@@ -23,18 +31,23 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Jumlah</th>
+                            <th>Alamat</th>
+                            <th>Kota</th>
+                            <th>Status</th>
                             <th>Keterangan</th>
-                            <th>Kota Asal</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($req as $data)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{$data->nama}}</td>
-                            <td>{{$data->jumlah}}</td>
+                            <td>{{$data->nama_req}}</td>
+                            <td>{{$data->jumlah_req}}</td>
+                            <td>{{$data->alamat_req}}</td>
+                            <td>{{$data->kota_req}}</td>
+                            <td>{{$data->status_req}}</td>
                             <td>{{$data->keterangan}}</td>
-                            <td>{{$data->kota_tujuan}}</td>
                             <td><a href="/request/{{$data->id}}" class="badge badge-primary">detail</a>
                                 <a href="/request/{{$data->id}}/edit" class="badge badge-success">edit</a>
                                 <!-- <a href="" class="badge badge-danger">delete</a> -->

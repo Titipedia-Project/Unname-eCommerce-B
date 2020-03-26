@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('harga_jasa');
             $table->integer('harga_produk');
             $table->integer('berat');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('asal_pengiriman');
             $table->integer('id_user');
