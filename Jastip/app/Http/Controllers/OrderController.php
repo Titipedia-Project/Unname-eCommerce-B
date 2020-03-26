@@ -83,11 +83,11 @@ class OrderController extends Controller
     }
     public function RajaOngkir(Request $request)
     {
-        /*
-        $nama_kota_asal_pengiriman = $request['kota_asal'];
         
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
+        $nama_kota_asal_pengiriman = $request['asal'];
+        
+        $curl1 = curl_init();
+        curl_setopt_array($curl1, array(
             CURLOPT_URL => "http://api.rajaongkir.com/starter/city",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -100,21 +100,21 @@ class OrderController extends Controller
             ),
         ));
 
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
+        $response1 = curl_exec($curl1);
+        $err1 = curl_error($curl1);
 
-        curl_close($curl);
+        curl_close($curl1);
         $id_kab = '';
-        $data = json_decode($response, true);
+        $data = json_decode($response1, true);
         for ($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
             if($data['rajaongkir']['results'][$i]['city_name'] === $nama_kota_asal_pengiriman){
                 $id_kab = $data['rajaongkir']['results'][$i]['city_id'];
             }
         }       
-        */                        
+                          
         Log::debug($request['kab_id']);
-        
-        $asal = 444;
+        Log::debug($id_kab);
+        $asal = $id_kab;
         $id_kabupaten = $request['kab_id'];
         $kurir = 'tiki'; //$request['kurir'];
         $berat = 1;

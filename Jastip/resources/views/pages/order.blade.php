@@ -41,6 +41,11 @@
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Jumlah Pembelian</label>
+                                    <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian"
+                                       value="1" min="1" max="{{$product->stok}}">
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Pembeli</label>
                                     <input type="text" class="form-control" id="nama" name="nama_pembeli"
                                         value="{{Auth::user()->name}}" aria-describedby="emailHelp">
@@ -73,12 +78,11 @@
 
                                 <div class="form-group">
                                     <label >Total</label>
-                                    <div class="form-control" id="totalHarga">
-
-                                    </div>
+                                    <h2 id="totalHarga"></h2>
+                                   
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                
                             </form>
                         </div>
                         <div class="card-body">
@@ -97,15 +101,18 @@
 <script type="text/javascript">
     $(document).ready(function () {
     var harga_produk = $('#harga_produk').val();
+    var harga_jasa = $('#harga_jasa').val();
+    
     var asal = $('#asal').val();
     localStorage.setItem('harga', harga_produk);
     localStorage.setItem('hargaTerakhir', 0);
 
    $('#kab_id').on('change', function (e) {
       var name =  $('#kab_id').val();
-      var name2 =  $('#asal').val();
+      var name2 =  "{{$product->asal_pengiriman}}";
       $.post("{{url('/order/get_price')}}", {
-        'kab_id': name2,
+        'kab_id': name,
+        'asal': "{{$product->asal_pengiriman}}",
         '_token': "{{csrf_token()}}"
       },
       function (data) {
