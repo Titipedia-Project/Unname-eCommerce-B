@@ -1,7 +1,7 @@
-<div class="card my-4">
-  <div class="card-header bg-light mt-3">
+<div class="card my-4 shadow-lg p-3 mb-5 bg-white rounded border-0">
+  <div class="card-header bg-white mt-3">
     
-    <div class="card bg-light border-0 text-left">
+    <div class="card bg-white border-0 text-left">
     <img width="140" height="140" src="{{ asset('photo_profile/'. Auth::user()->foto) }} " class="rounded-circle mx-auto" alt="...">
       <div class="card-body">
         <h3 class="text-center" class="card-title">{{Auth::user()->name}}</h3>

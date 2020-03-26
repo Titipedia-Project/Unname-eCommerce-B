@@ -38,11 +38,9 @@
     @foreach($produks as $data)
     <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="produk_images/{{$data->gambar}}" alt=""></a>
+            <a href="#"><img height="180" style="width:auto;" class="card-img-top mx-auto d-block" src="produk_images/{{$data->gambar}}" alt=""></a>
             <div class="card-body">
-
                 <small class="font-weight-bold" style="color: #65587f;">{{$data->nama}}</small>
-
             </div>
             <div class="card-footer bg-white">
                 <h6>Rp. {{$data->harga_produk}}</h6>
@@ -52,8 +50,7 @@
                     </div>
                     <div class="col">
                         <div class="text-right">
-                            <small href="#" style="background-color: #65587f; border: hidden" class="btn btn-primary">Order</small>
-
+                            <a href="/order/{{$data->id}}" style="background-color: #65587f; border: hidden" class="btn btn-primary">Order</a>
                         </div>
                     </div>
                 </div>

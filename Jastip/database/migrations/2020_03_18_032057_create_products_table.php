@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('berat');
             $table->string('gambar');
             $table->string('keterangan')->nullable();
+            $table->string('asal_pengiriman');
             $table->integer('id_user');
             $table->integer('id_kategori');
         });

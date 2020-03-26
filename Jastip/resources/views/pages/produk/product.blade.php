@@ -1,8 +1,8 @@
 @extends('layouts.profileview')
 @section('content')
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-header">
+<div class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded border-0">
+    <div class="card border-0">
+        <div class="card-header bg-white">
             <h3>Data Produk</h3>
         </div>
         <div class="card-body">
@@ -17,7 +17,7 @@
             </div>
             @endif
             <div class="mt-3">
-                <table id="table_product" class="table table-striped table-bordered table-hover">
+                <table id="table_product" class="table table-hover">
                     <thead>
                         <tr>
                             <th>No</th>

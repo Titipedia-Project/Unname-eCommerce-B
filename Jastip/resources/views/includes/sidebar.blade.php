@@ -1,4 +1,4 @@
-<div class="card my-4">
+<div class="card my-4 shadow-lg p-3 mb-5 bg-white rounded border-0">
   <div class="card-header bg-light">
     Category
   </div>

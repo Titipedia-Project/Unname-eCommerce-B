@@ -1,8 +1,8 @@
 @extends('layouts.fullview')
 @section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-header">
+<div class="container mt-5 shadow-lg p-3 mb-5 bg-white rounded border-0">
+    <div class="card border-0">
+        <div class="card-header bg-white">
             <h3>Tambah Data Produk</h3>
         </div>
         <div class="card-body">

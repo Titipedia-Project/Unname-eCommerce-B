@@ -22,8 +22,8 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-    @include('includes.footer')
+    <footer class="py-5 mt-5 bg-dark">
+        @include('includes.footer')
         <!-- /.container -->
     </footer>
 

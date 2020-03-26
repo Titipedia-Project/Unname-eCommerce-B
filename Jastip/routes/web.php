@@ -37,4 +37,7 @@ Route::post('/topup', 'UserController@update');
 Route::get('/Profile/{profile}/edit', 'UserController@edit');
 
 //Order
-Route::get('/order/{order}', 'OrderController@show');
+Route::get('/order/{product}', 'OrderController@showProduk');
+
+//Order
+Route::post('/order/get_price', 'OrderController@RajaOngkir');
