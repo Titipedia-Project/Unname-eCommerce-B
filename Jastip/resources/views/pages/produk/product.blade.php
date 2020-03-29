@@ -8,10 +8,11 @@
         <div class="card-body">
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-md-4">
-                    <a href="produk/create" class="btn btn-success" style="background-color: #65587f; border: hidden">Tambah Data</a>
+                    <a href="produk/create" class="btn btn-success"
+                        style="background-color: #65587f; border: hidden">Tambah Data</a>
                 </div>
             </div>
-            @if (session('status')===Data Berhasil Ditambahkan!)
+            @if (session('status') === "Data Berhasil Ditambahkan!")
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
