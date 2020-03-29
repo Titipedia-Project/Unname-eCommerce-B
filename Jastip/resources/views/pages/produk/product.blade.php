@@ -8,8 +8,7 @@
         <div class="card-body">
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-md-4">
-                    <a href="produk/create" class="btn btn-success"
-                        style="background-color: #65587f; border: hidden">Tambah Data</a>
+                    <a href="produk/create" class="btn btn-success" style="background-color: #65587f; border: hidden">Tambah Data</a>
                 </div>
             </div>
             @if (session('status') === "Data Berhasil Ditambahkan!")
@@ -26,7 +25,7 @@
             </div>
             @endif
             <div class="mt-3">
-                <table id="table_product" class="table table-hover">
+                <table id="table_product" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>No</th>

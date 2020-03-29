@@ -1,0 +1,5 @@
+~~Galih~~
+1. buat edit user dengan edit foto terpisah
+
+~~Ivan~~
+1. table produk dihilankan kotanya
