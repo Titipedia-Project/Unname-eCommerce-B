@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
+use Yajra\DataTables\Contracts\DataTable;
+
 class OrderController extends Controller
 {
     public function __construct()
@@ -45,7 +47,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
          //validation
          $request->validate([
             'id_produk' => 'required',
@@ -58,24 +59,26 @@ class OrderController extends Controller
             'hargaTotalnya' => 'required'
         ]);
         Order::create([
-            'kode_transaksi' => 'JAHSM78799', 
+            'kode_transaksi' => Carbon::now()->format('mdHis').$request->id_pembeli.$request->id_produk, 
             'kuantitas' => $request->stok_pembelian, 
             'total_harga' => $request->hargaTotalnya, 
             'kurir' => 'Tiki', 
-            'service' => $request->tipeService, 
-            'ongkir' => 0, 
+            'service' => explode(",", $request->tipeService)[1], 
+            'ongkir' => explode(",", $request->tipeService)[0], 
             'tanggal_penjualan' => Carbon::now()->format('Y-m-d H:i:s'),  
             'status_order' => 'menunggu', 
             'id_user' => $request->id_pembeli, 
             'id_produk' => $request->id_produk
         ]);
         $produk_stok = DB::table('products')
-        ->where('id', $request->id_produk)
-        ->get()->stok;
+        ->where('products.id', '=', '1')
+        ->get();
+
+        
 
         //$id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
         
-        $stok_baru = $produk_stok->stok - $request->stok_pembelian;
+        $stok_baru = $produk_stok[0]->stok - $request->stok_pembelian;
 
         DB::table('products')
         ->where('id', $request->id_produk)
@@ -84,13 +87,13 @@ class OrderController extends Controller
         //Product::create($request->all());//all akan mengambil semua data fillable yang ada di model product
         $kategoris = DB::table('kategoris')->get();
 
-        $produks = DB::table('products')
-            ->join('users', 'users.id', '=', 'products.id_user')
-            ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
-            ->select('products.*', 'users.name', 'kategoris.nama_kategori')
-            ->latest()->take(8)->get();
-
-        return view('pages.home', compact('produks', 'kategoris'));
+        $orders = DB::table('orders')
+        ->where('orders.id_user', '=', $request->id_pembeli)
+        ->join('products', 'products.id', '=', 'orders.id_produk')
+        ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
+        ->latest('orders.created_at')->get();
+    //$ordsers = DB::table('orders')->where('id_user', '=', $id)->get();
+    return view('pages.order.show', compact('orders'));
     }
 
     /**
@@ -99,9 +102,16 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
-    {
-        //return view('pages.order', compact('product'));
+    public function show($id)
+    {   
+        $id_user = $id;
+        $orders = DB::table('orders')
+            ->where('orders.id_user', '=', $id)
+            ->join('products', 'products.id', '=', 'orders.id_produk')
+            ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
+            ->latest('orders.created_at')->get();
+        //$ordsers = DB::table('orders')->where('id_user', '=', $id)->get();
+        return view('pages.order.show', compact('orders'));
     }
     public function showProduk(Product $product)
     {

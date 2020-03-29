@@ -3,4 +3,7 @@
     $(document).ready(function() {
         $('#table_product').DataTable();
     });
+    $(document).ready(function() {
+        $('#table_order').DataTable();
+    });
 </script>

@@ -9,7 +9,7 @@
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form class="mx-2 my-auto d-inline w-100">
+        <form class="mx-2 my-auto d-block w-100">
             <div class="input-group">
                 <input type="text" class="form-control border border-right-0" placeholder="Search here...">
                 <span class="input-group-append">
@@ -21,9 +21,7 @@
         </form>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-
                 @guest
-
                 <li class="nav-item">
                     <a class="nav-link text-light" href="/login">Login</a>
                 </li>
@@ -32,29 +30,30 @@
                 </li>
 
                 @else
-                <li class="nav-item active">
-                    <a class="nav-link text-light">Order</a>
-                </li>
                 <li class="nav-item dropdown">
-                    
+
 
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="{{ asset('photo_profile/'.Auth::user()->foto)}}" class="rounded-circle" width="30" height="30" alt="logo">
+                        <img src="{{ asset('photo_profile/'.Auth::user()->foto)}}" class="rounded-circle" width="30"
+                            height="30" alt="logo">
                         {{ Auth::user()->name }} <span class="caret"></span>
-                        
-                    </a>
-                   
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <a class="dropdown-item" href="/produk">Profile</a>
 
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                        <a class="dropdown-item" href="/produk">Profile</a>
+    
+                        <a class="dropdown-item" href="/order/daftar_pembelian_preorder/{{Auth::user()->id}}">Pre-Order
+                            List</a>
+                        <a class="dropdown-item" href="/produk">Request List</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
                     </div>
                 </li>
                 @endguest
