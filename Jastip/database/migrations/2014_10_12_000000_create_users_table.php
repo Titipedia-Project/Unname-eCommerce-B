@@ -22,10 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->String('jenis_kelamin')->default('');
+            $table->string('jenis_kelamin')->default('');
             $table->date('tanggal_lahir')->nullable();
             $table->string('tempat_lahir')->default('');
             $table->string('alamat')->default('');
+            $table->string('kota')->default('');
             $table->string('no_hp')->default('');
             $table->string('foto')->default('');
             $table->bigInteger('saldo')->default(0);

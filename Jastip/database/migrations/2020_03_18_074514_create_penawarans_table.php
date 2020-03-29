@@ -16,12 +16,11 @@ class CreatePenawaransTable extends Migration
         Schema::create('penawarans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('harga_jasa');
-            $table->integer('harga_produk');
-            $table->integer('ongkir');
+            $table->integer('harga_jasa_penawaran');
+            $table->integer('harga_produk_penawaran');
+            $table->string('alamat_penawaran');
+            $table->string('kota_penawaran');
             $table->enum('status', ['menunggu', 'diterima', 'ditolak']);
-            $table->enum('proses', ['menunggu pembayaran', 'dikirim', 'diterima', 'sukses']);
-            $table->enum('pencairan', ['belum', 'sudah']);
             $table->integer('id_penerima');
             $table->integer('id_request');
         });

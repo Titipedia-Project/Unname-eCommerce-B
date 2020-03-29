@@ -11,8 +11,16 @@
                     <a href="produk/create" class="btn btn-success" style="background-color: #65587f; border: hidden">Tambah Data</a>
                 </div>
             </div>
-            @if (session('status'))
+            @if (session('status')===Data Berhasil Ditambahkan!)
             <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @elseif (session('status')==="Data Berhasil Diubah!")
+            <div class="alert alert-primary">
+                {{ session('status') }}
+            </div>
+            @elseif (session('status')==="Data Produk Berhasil Dihapus!")
+            <div class="alert alert-danger">
                 {{ session('status') }}
             </div>
             @endif

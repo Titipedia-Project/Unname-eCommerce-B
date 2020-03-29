@@ -36,6 +36,9 @@ Route::patch('/produk/{product}', 'ProductsController@update');
 Route::get('/request', 'ReqController@index');
 Route::get('/request/createreq', 'ReqController@create');
 Route::post('/request', 'ReqController@store');
+Route::delete('/request/{req}', 'ReqController@destroy');
+Route::get('/request/{req}/edit', 'ReqController@edit');
+Route::patch('/request/{req}', 'ReqController@update');
 
 //User
 Route::post('/topup', 'UserController@update');
