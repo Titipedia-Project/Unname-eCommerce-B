@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('tempat_lahir')->default('');
             $table->string('alamat')->default('');
             $table->string('kota')->default('');
+            $table->string('kota')->default('');
             $table->string('no_hp')->default('');
             $table->string('foto')->default('');
             $table->bigInteger('saldo')->default(0);

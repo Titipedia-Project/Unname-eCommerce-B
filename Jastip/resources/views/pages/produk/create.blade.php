@@ -34,7 +34,7 @@
                     <div class="col-sm-10">
                         <select class="custom-select @error('jenis_produk') is-invalid @enderror" id="jenis_produk" name="nama_kategori" value="{{old('jenis_produk')}}">
                             @foreach($kategoris as $key => $data)
-                            <option value="{{$key}}">{{$data->nama_kategori}}</option>
+                            <option value="{{$key+1}}">{{$data->nama_kategori}}</option>
                             @endforeach
                         </select>
                         @error('jenis_produk')

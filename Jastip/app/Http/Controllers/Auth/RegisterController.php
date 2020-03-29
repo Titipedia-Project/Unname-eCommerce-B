@@ -83,6 +83,7 @@ class RegisterController extends Controller
             'tempat_lahir' => $data['place_of_birth'],
             'tanggal_lahir' => date($data['date_of_birth']),
             'alamat' => $data['alamat'],
+            'kota' => $data['kota'],
             'no_hp' => $data['no_hp'],
             'foto' => $filename
             

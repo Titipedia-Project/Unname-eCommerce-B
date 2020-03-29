@@ -74,8 +74,6 @@ class OrderController extends Controller
         ->where('products.id', '=', '1')
         ->get();
 
-        
-
         //$id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
         
         $stok_baru = $produk_stok[0]->stok - $request->stok_pembelian;
