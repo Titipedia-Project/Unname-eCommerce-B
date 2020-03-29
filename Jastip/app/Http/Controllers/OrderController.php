@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -45,6 +46,51 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+         //validation
+         $request->validate([
+            'id_produk' => 'required',
+            'id_pembeli' => 'required',
+            'stok_pembelian' => 'required',
+            'nama_pembeli' => 'required',
+            'alamat_pengiriman' => 'required',
+            'nama_kota' => 'required',
+            'tipeService' => 'required',
+            'hargaTotalnya' => 'required'
+        ]);
+        Order::create([
+            'kode_transaksi' => 'JAHSM78799', 
+            'kuantitas' => $request->stok_pembelian, 
+            'total_harga' => $request->hargaTotalnya, 
+            'kurir' => 'Tiki', 
+            'service' => $request->tipeService, 
+            'ongkir' => 0, 
+            'tanggal_penjualan' => Carbon::now()->format('Y-m-d H:i:s'),  
+            'status_order' => 'menunggu', 
+            'id_user' => $request->id_pembeli, 
+            'id_produk' => $request->id_produk
+        ]);
+        $produk_stok = DB::table('products')
+        ->where('id', $request->id_produk)
+        ->get()->stok;
+
+        //$id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
+        
+        $stok_baru = $produk_stok->stok - $request->stok_pembelian;
+
+        DB::table('products')
+        ->where('id', $request->id_produk)
+        ->update(['stok' => $stok_baru]);
+        //cara 3
+        //Product::create($request->all());//all akan mengambil semua data fillable yang ada di model product
+        $kategoris = DB::table('kategoris')->get();
+
+        $produks = DB::table('products')
+            ->join('users', 'users.id', '=', 'products.id_user')
+            ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
+            ->select('products.*', 'users.name', 'kategoris.nama_kategori')
+            ->latest()->take(8)->get();
+
+        return view('pages.home', compact('produks', 'kategoris'));
     }
 
     /**
@@ -77,9 +123,9 @@ class OrderController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
-
+       
         $kategori = DB::table('kategoris')->where('id', '=', $product->id_kategori)->get();
-        return view('pages.order', compact('product', 'kategori', 'response'));
+        return view('pages.order.order', compact('product', 'kategori', 'response'));
     }
     public function RajaOngkir(Request $request)
     {

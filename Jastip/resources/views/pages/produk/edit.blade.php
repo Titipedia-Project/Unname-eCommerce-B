@@ -22,8 +22,14 @@
                     <label for="jenis_produk" class="col-sm-2 col-form-label">Jenis Produk</label>
                     <div class="col-sm-10">
                         <select class="custom-select @error('jenis_produk') is-invalid @enderror" id="jenis_produk" name="jenis_produk" value="{{$product->jenis_produk}}">
-                            <option value="normal">Normal Buy</option>
-                            <option value="bulk">Bulk Buy</option>
+                            @if($product->jenis_produk === "normal")
+                                <option selected value="normal">Normal Buy</option>
+                                <option value="bulk">Bulk Buy</option>
+                            @else
+                                <option value="normal">Normal Buy</option>
+                                <option selected value="bulk">Bulk Buy</option>
+                            @endif
+                            
                         </select>
                         @error('jenis_produk')
                         <div class="invalid-feedback">{{$message}}</div>

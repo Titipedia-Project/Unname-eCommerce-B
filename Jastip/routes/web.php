@@ -43,6 +43,6 @@ Route::get('/Profile/{profile}/edit', 'UserController@edit');
 
 //Order
 Route::get('/order/{product}', 'OrderController@showProduk');
-
-//Order
+Route::post('/order/confirm', 'OrderController@store');
+//RajaOngkir
 Route::post('/order/get_price', 'OrderController@RajaOngkir');

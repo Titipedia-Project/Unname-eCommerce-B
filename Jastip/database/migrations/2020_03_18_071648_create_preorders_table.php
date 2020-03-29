@@ -20,12 +20,14 @@ class CreatePreordersTable extends Migration
             $table->string('kurir');
             $table->string('service');
             $table->integer('ongkir');
+            $table->integer('total_harga');
+            $table->integer('kuantitas');
             $table->date('tanggal_penjualan');
             $table->date('tanggal_pengiriman')->nullable();
-            $table->string('nomor_resi');
+            $table->string('nomor_resi')->nullable();
             $table->enum('status_order', ['menunggu', 'dikirim', 'diterima', 'selesai']);
-            $table->integer('id_penjual');
-            $table->integer('id_pembeli');
+            $table->integer('id_produk');
+            $table->integer('id_user');
         });
     }
 

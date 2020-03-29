@@ -39,7 +39,10 @@
                         </ul>
 
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="/order/confirm">
+                                @csrf
+                            <input type="text" hidden class="form-control" id="id_produk" name="id_produk" value="{{$product->id}}">
+                                <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli" value="{{Auth::user()->id}}">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Jumlah Pembelian</label>
                                     <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian"
@@ -63,30 +66,30 @@
                                         <?PHP
                                         $data = json_decode($response, true);
                                         for ($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
-                                          echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'> ".$data['rajaongkir']['results'][$i]['city_name']."</option>";
+                                            if($data['rajaongkir']['results'][$i]['city_name'] === "Jakarta Barat"){
+                                                echo "<option selected value='".$data['rajaongkir']['results'][$i]['city_id']."'> ".$data['rajaongkir']['results'][$i]['city_name']."</option>";
+                                            }
+                                            echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'> ".$data['rajaongkir']['results'][$i]['city_name']."</option>";
                                         }
                                         ?>
                                     </select>
+                                    <input type="text" hidden class="form-control" id="nama_kota" name="nama_kota">
                                 </div>
                                 <div class="form-group">
                                     <label>Tipe Pengiriman</label>
                                     <select class="form-control" id="tipeService" name="tipeService" required>
-
                                     </select>
-
                                 </div>
-
                                 <div class="form-group">
                                     <label >Total</label>
                                     <h2 id="totalHarga"></h2>
-                                   
+                                    
                                 </div>
-                                
-                                
+                                <button type="submit" class="btn btn-success d-block">Beli</button>
                             </form>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="btn btn-success d-block">Beli</a>
+                           
 
                         </div>
                     </div>
@@ -102,12 +105,17 @@
     $(document).ready(function () {
     var harga_produk = $('#harga_produk').val();
     var harga_jasa = $('#harga_jasa').val();
+    var harga_total = harga_produk + harga_jasa;
     
     var asal = $('#asal').val();
-    localStorage.setItem('harga', harga_produk);
+    localStorage.setItem('harga', harga_total);
     localStorage.setItem('hargaTerakhir', 0);
-
+    var nama_kota = $('#kab_id').find(":selected").text();
+    $('#nama_kota').val(nama_kota);
    $('#kab_id').on('change', function (e) {
+    var nama_kota = $('#kab_id').find(":selected").text();
+    $('#nama_kota').val(nama_kota);
+      
       var name =  $('#kab_id').val();
       var name2 =  "{{$product->asal_pengiriman}}";
       $.post("{{url('/order/get_price')}}", {
@@ -147,8 +155,7 @@
       localStorage.setItem('biayaOngkir', biayaOngkirBaru);
 
       var hargaBaru = Number(biayaOngkirBaru) + Number(hargaSementara);
-
-      alert(hargaBaru);
+   
       localStorage.setItem('harga',hargaBaru);
       $('#totalHarga').html('');
       $('#totalHarga').append('<h3>Rp.'+localStorage.getItem('harga')+'</h3><input type="hidden" class="form-control" name="hargaTotalnya" id="totalHargaH3" value="'+localStorage.getItem('harga')+'">');   
