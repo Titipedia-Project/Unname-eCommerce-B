@@ -3,3 +3,6 @@
 
 ~~Ivan~~
 1. table produk dihilankan kotanya
+
+~~database preorder~~
+relasi dr user pembeli dan produk bukan dari user penjual dan pembeli
