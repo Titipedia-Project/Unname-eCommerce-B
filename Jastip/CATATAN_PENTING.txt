@@ -4,5 +4,7 @@
 ~~Ivan~~
 1. table produk dihilankan kotanya
 
-~~database preorder~~
-relasi dr user pembeli dan produk bukan dari user penjual dan pembeli
+~~database~~
+1.tabel preorder relasi dr user pembeli dan produk bukan dari user penjual dan pembeli
+2.tabel pembayaran relasi
+3.nomor resi belum null

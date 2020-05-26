@@ -19,6 +19,7 @@ class CreatePenjualanReqsTable extends Migration
             $table->string('kode_transaksi');
             $table->string('kurir');
             $table->string('service');
+            $table->integer('ongkir');
             $table->date('tanggal_penjualan');
             $table->date('tanggal_pengiriman')->nullable();
             $table->string('nomor_resi');
