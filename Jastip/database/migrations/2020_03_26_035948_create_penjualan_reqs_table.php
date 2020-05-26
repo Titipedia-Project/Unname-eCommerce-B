@@ -22,10 +22,11 @@ class CreatePenjualanReqsTable extends Migration
             $table->integer('ongkir');
             $table->date('tanggal_penjualan');
             $table->date('tanggal_pengiriman')->nullable();
-            $table->string('nomor_resi');
+            $table->string('nomor_resi')->nullable();
             $table->integer('total_harga');
             $table->enum('status_penjualan_req', ['menunggu', 'dikirim', 'diterima', 'selesai']);
             $table->integer('rating');
+            $table->string('review')->nullable();
             $table->integer('id_penawaran');
         });
     }
