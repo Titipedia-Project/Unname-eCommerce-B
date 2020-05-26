@@ -21,6 +21,7 @@ class CreateMutasiSaldosTable extends Migration
             $table->int('saldo_keluar')->nullable();
             $table->dateTime('tanggal');
             $table->integer('user_id');
+            //
         });
     }
 
