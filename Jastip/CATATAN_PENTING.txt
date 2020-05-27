@@ -35,3 +35,7 @@ Revisi :
 Error :
         - OrderController
         - View Make Order
+
+----------------///revisi progam Product//------------------
+Revisi :
+        - Tambahkan asal pengiriman di create dan edit serta model
