@@ -32,3 +32,6 @@ Error :
 ----------------///REVISI Tabel Preorder//------------------
 Revisi :
         - Tambahkan field FK Product-Bulk-Buy FK
+Error :
+        - OrderController
+        - View Make Order
