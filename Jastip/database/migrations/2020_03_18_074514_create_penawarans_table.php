@@ -25,7 +25,6 @@ class CreatePenawaransTable extends Migration
             $table->integer('id_request');
         });
     }
-
     /**
      * Reverse the migrations.
      *

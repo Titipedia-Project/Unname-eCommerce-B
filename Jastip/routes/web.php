@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,9 @@ Route::get('/Profile/{profile}/edit', 'UserController@edit');
 Route::get('/order/{product}', 'OrderController@showProduk');
 Route::post('/order/confirm', 'OrderController@store');
 Route::get('/order/daftar_pembelian_preorder/{id}', 'OrderController@show');
+
+//Profile
+Route::get('/profile', 'UserController@index');
 
 //RajaOngkir
 Route::post('/order/get_price', 'OrderController@RajaOngkir');

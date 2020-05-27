@@ -42,8 +42,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item" href="/produk">Profile</a>
-    
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/produk">Produk & Request</a>
                         <a class="dropdown-item" href="/order/daftar_pembelian_preorder/{{Auth::user()->id}}">Pre-Order
                             List</a>
                         <a class="dropdown-item" href="/produk">Request List</a>
