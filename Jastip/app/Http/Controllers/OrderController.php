@@ -6,8 +6,11 @@ use App\Order;
 use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+
+
 
 use Yajra\DataTables\Contracts\DataTable;
 
@@ -90,8 +93,8 @@ class OrderController extends Controller
         ->join('products', 'products.id', '=', 'orders.id_produk')
         ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
         ->latest('orders.created_at')->get();
-    //$ordsers = DB::table('orders')->where('id_user', '=', $id)->get();
-    return view('pages.order.show', compact('orders'));
+        //$ordsers = DB::table('orders')->where('id_user', '=', $id)->get();
+        return view('pages.order.show', compact('orders'));
     }
 
     /**
@@ -113,6 +116,7 @@ class OrderController extends Controller
     }
     public function showProduk(Product $product)
     {
+        $key = Config::get('RAJA_ONGKIR_API');
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "http://api.rajaongkir.com/starter/city",
@@ -123,7 +127,8 @@ class OrderController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "key: 20abcef3dbf0bc2149a7412bc9b60005"
+                "key: b4cf42007b63acb57e34af6c70bddd8d"
+                
             ),
         ));
 
@@ -137,9 +142,8 @@ class OrderController extends Controller
     }
     public function RajaOngkir(Request $request)
     {
-        
         $nama_kota_asal_pengiriman = $request['asal'];
-        
+        $key = Config::get('RAJA_ONGKIR_API');
         $curl1 = curl_init();
         curl_setopt_array($curl1, array(
             CURLOPT_URL => "http://api.rajaongkir.com/starter/city",
@@ -150,7 +154,7 @@ class OrderController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "key: 20abcef3dbf0bc2149a7412bc9b60005"
+                "key: b4cf42007b63acb57e34af6c70bddd8d"
             ),
         ));
 
@@ -185,7 +189,7 @@ class OrderController extends Controller
             CURLOPT_POSTFIELDS => "origin=" . $asal . "&destination=" . $id_kabupaten . "&weight=" . $berat . "&courier=" . $kurir . "",
             CURLOPT_HTTPHEADER => array(
                 "content-type: application/x-www-form-urlencoded",
-                "key: 20abcef3dbf0bc2149a7412bc9b60005"
+                "key: b4cf42007b63acb57e34af6c70bddd8d"
             ),
         ));
 

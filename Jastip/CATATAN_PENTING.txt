@@ -14,3 +14,21 @@ relasi dr user pembeli dan produk bukan dari user penjual dan pembeli
 
 asal pngiriman tambah barang d update
 fix gambar produk
+
+
+----------------///REVISI Tabel PRODUK//-------------------
+Revisi :
+        - Hapus Jenis Produk
+        - Hapus Gambar
+        - Buat Tabel Produk-Bulk-Buy
+        - Buat Tabel gambar
+Error :
+        - OrderController
+        - ProductController
+        - View Produk
+        - View Edit Produk
+        - View Create Produk
+
+----------------///REVISI Tabel Preorder//------------------
+Revisi :
+        - Tambahkan field FK Product-Bulk-Buy FK
