@@ -11,3 +11,6 @@ relasi dr user pembeli dan produk bukan dari user penjual dan pembeli
 
 - Relasi Produk - Gambar One-To-Many
 - Jangan smpai user beli barang sndiri
+
+asal pngiriman tambah barang d update
+fix gambar produk
