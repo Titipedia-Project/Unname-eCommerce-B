@@ -1,12 +1,10 @@
 <nav style="background-color: #65587f;" class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand text-light" href="/home">
-            <img src="{{ asset('images/titipedia.png') }}" width="30" height="30" class="d-inline-block align-top"
-                alt="">
+            <img src="{{ asset('images/titipedia.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
             Titipedia
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <form class="mx-2 my-auto d-block w-100">
@@ -33,10 +31,8 @@
                 <li class="nav-item dropdown">
 
 
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="{{ asset('photo_profile/'.Auth::user()->foto)}}" class="rounded-circle" width="30"
-                            height="30" alt="logo">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <img src="{{ asset('photo_profile/'.Auth::user()->foto)}}" class="rounded-circle" width="30" height="30" alt="logo">
                         {{ Auth::user()->name }} <span class="caret"></span>
 
                     </a>
@@ -47,6 +43,7 @@
                         <a class="dropdown-item" href="/order/daftar_pembelian_preorder/{{Auth::user()->id}}">Pre-Order
                             List</a>
                         <a class="dropdown-item" href="/produk">Request List</a>
+                        <a class="dropdown-item" href="/topup">Top Up Saldo</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

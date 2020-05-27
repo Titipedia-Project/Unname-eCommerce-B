@@ -42,8 +42,13 @@ Route::get('/request/{req}/edit', 'ReqController@edit');
 Route::patch('/request/{req}', 'ReqController@update');
 
 //User
-Route::post('/topup', 'UserController@update');
+//Route::post('/tambahsaldo', 'UserController@update');
 Route::get('/Profile/{profile}/edit', 'UserController@edit');
+
+//topup
+Route::get('/topup', 'Mutasi_SaldosController@index');
+Route::post('/tambahsaldo', 'Mutasi_SaldosController@store');
+Route::post('/tariksaldo', 'Mutasi_SaldosController@update');
 
 //Order
 Route::get('/order/{product}', 'OrderController@showProduk');
