@@ -71,7 +71,29 @@ class Mutasi_SaldosController extends Controller
             ]);
         return redirect('topup')->with('status', 'Saldo Berhasil di Tambah!');
     }
-
+    public function withdraw(Request $request)
+    {
+        //
+        Mutasi_Saldo::create([
+            'nama_bank' => $request->nama_bank,
+            'saldo_keluar' => $request->tarik_saldo,
+            'keterangan' => $request->keterangan,
+            'tanggal' => Carbon::now()->format('Y-m-d H:i:s'),
+            'user_id' => $request->id_user
+        ]);
+        $user = User::find($request->id_user);
+        $saldo = $user->saldo;
+        $tarik_saldo = $saldo - $request->tarik_saldo;
+        if ($saldo < $tarik_saldo) {
+            return redirect('topup')->with('status', 'Jumlah Yang Anda Ambil Melebihi Limit Saldo Anda!');
+        } else {
+            User::where('id', $request->id_user)
+                ->update([
+                    'saldo' => $tarik_saldo
+                ]);
+            return redirect('topup')->with('status', 'Saldo Berhasil Diambil!');
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -104,26 +126,26 @@ class Mutasi_SaldosController extends Controller
     public function update(Request $request, Mutasi_Saldo $mutasi_Saldo)
     {
         //
-        Mutasi_Saldo::where('user_id', $request->id_user)
-            ->update([
-                'nama_bank' => $request->nama_bank,
-                'saldo_keluar' => $request->tarik_saldo,
-                'keterangan' => $request->keterangan,
-                'tanggal' => Carbon::now()->format('Y-m-d H:i:s'),
-                'user_id' => $request->id_user
-            ]);
-        $user = User::find($request->id_user);
-        $saldo = $user->saldo;
-        $saldo_baru = $saldo - $request->tarik_saldo;
-        if ($saldo < $saldo_baru) {
-            return redirect('topup')->with('status', 'Jumlah Yang Anda Ambil Melebihi Limit Saldo Anda!');
-        } else {
-            User::where('id', $request->id_user)
-                ->update([
-                    'saldo' => $saldo_baru
-                ]);
-            return redirect('topup')->with('status', 'Saldo Berhasil Diambil!');
-        }
+        // Mutasi_Saldo::where('user_id', $request->id_user)
+        //     ->update([
+        //         'nama_bank' => $request->nama_bank,
+        //         'saldo_keluar' => $request->tarik_saldo,
+        //         'keterangan' => $request->keterangan,
+        //         'tanggal' => Carbon::now()->format('Y-m-d H:i:s'),
+        //         'user_id' => $request->id_user
+        //     ]);
+        // $user = User::find($request->id_user);
+        // $saldo = $user->saldo;
+        // $saldo_baru = $saldo - $request->tarik_saldo;
+        // if ($saldo < $saldo_baru) {
+        //     return redirect('topup')->with('status', 'Jumlah Yang Anda Ambil Melebihi Limit Saldo Anda!');
+        // } else {
+        //     User::where('id', $request->id_user)
+        //         ->update([
+        //             'saldo' => $saldo_baru
+        //         ]);
+        //     return redirect('topup')->with('status', 'Saldo Berhasil Diambil!');
+        // }
     }
 
     /**
