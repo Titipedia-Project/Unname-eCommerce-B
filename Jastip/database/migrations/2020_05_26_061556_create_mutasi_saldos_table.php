@@ -19,6 +19,7 @@ class CreateMutasiSaldosTable extends Migration
             $table->string('nama_bank');
             $table->int('saldo_masuk')->nullable();
             $table->int('saldo_keluar')->nullable();
+            $table->string('keterangan')->nullable();
             $table->dateTime('tanggal');
             $table->integer('user_id');
             //
