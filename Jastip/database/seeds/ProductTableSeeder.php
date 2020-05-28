@@ -29,6 +29,10 @@ class ProductTableSeeder extends Seeder
                 'id_kategori' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
+            DB::table('gambars')->insert([
+               'id_produk' => $i,
+               'url' => 'produk.jpg'
+            ]);
         }
     }
 }

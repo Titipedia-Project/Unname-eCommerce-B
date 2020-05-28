@@ -9,9 +9,25 @@
             <div class="row">
                 <div class="col">
                     @csrf
-                    <div class="card border-0">
-                        <img src="{{asset('produk_images/'.$product->gambar)}}" class="mt-4 card-img-top" alt="...">
-                    </div>
+                    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach ($gambar as $item)
+                          <div class="carousel-item active" data-interval="10000">
+                            <img src="{{asset('produk_images/'.$item->url)}}" class="d-block w-100" alt="...">
+                          </div>
+                          @endforeach
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                    
+                    
                 </div>
                 <div class="col">
                     <div class="card mt-5 border-0">

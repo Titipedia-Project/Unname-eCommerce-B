@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Product;
+use App\gambar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -138,7 +139,8 @@ class OrderController extends Controller
         curl_close($curl);
        
         $kategori = DB::table('kategoris')->where('id', '=', $product->id_kategori)->get();
-        return view('pages.order.order', compact('product', 'kategori', 'response'));
+        $gambar = DB::table('gambars')->where('id_produk', '=', $product->id)->get();
+        return view('pages.order.order', compact('product', 'kategori', 'response', 'gambar'));
     }
     public function RajaOngkir(Request $request)
     {

@@ -1,4 +1,4 @@
-@extends('layouts.profileview')
+@extends('layouts.productview')
 @section('content')
 <div class="container mt-4 shadow-lg p-3 mb-5 bg-white rounded border-0">
     <div class="card border-0">

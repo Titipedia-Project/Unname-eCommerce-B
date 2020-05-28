@@ -28,9 +28,9 @@ class HomeController extends Controller
         $produks = DB::table('products')
             ->join('users', 'users.id', '=', 'products.id_user')
             ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
-            ->select('products.*', 'users.name', 'kategoris.nama_kategori')
+            ->join('gambars', 'products.id', '=', 'gambars.id_produk')->groupBy('products.id')
+            ->select('products.*', 'users.name', 'gambars.url', 'kategoris.nama_kategori')
             ->latest()->take(8)->get();
-
         return view('pages.home', compact('produks', 'kategoris'));
     }
 }

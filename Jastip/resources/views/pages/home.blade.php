@@ -38,7 +38,7 @@
     @foreach($produks as $data)
     <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-            <a href="#"><img height="180" style="width:auto;" class="card-img-top mx-auto d-block" src="produk_images/{{$data->gambar}}" alt=""></a>
+            <a href="#"><img height="180" style="width:auto;" class="card-img-top mx-auto d-block" src="produk_images/{{$data->url}}" alt=""></a>
             <div class="card-body">
                 <small class="font-weight-bold" style="color: #65587f;">{{$data->nama}}</small>
             </div>

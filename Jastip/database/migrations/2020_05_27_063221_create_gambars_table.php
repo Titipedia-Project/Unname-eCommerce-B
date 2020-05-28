@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateGambarsTable extends Migration
 {
@@ -17,9 +18,9 @@ class CreateGambarsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('url');
-            $table->integer('id_produk');
-            $table->integer('id_bulkbuy');
-            $table->integer('id_reqs');
+            $table->integer('id_produk') -> nullable();
+            $table->integer('id_bulkbuy') -> nullable();
+            $table->integer('id_reqs') -> nullable();
         });
     }
 

@@ -19,7 +19,7 @@
 
             <div class="col-lg-3">
                 <!-- Sidebar -->
-                @include('includes.profile')
+                @include('includes.sidebarProduct')
             </div>
             <!-- /.col-lg-3 -->
 
