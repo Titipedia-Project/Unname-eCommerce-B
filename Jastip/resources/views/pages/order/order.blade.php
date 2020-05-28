@@ -9,61 +9,82 @@
             <div class="row">
                 <div class="col">
                     @csrf
-                    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            @foreach ($gambar as $item)
-                            <div class="carousel-item active" data-interval="10000">
-                                <img src="{{asset('produk_images/'.$item->url)}}" class="d-block w-100" alt="...">
-                            </div>
-                            @endforeach
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px">
-                        <div class="col-md-4">
-                            <a href="/pesan/{{$product->id_user}}" class="btn btn-success" style="background-color: #65587f; border: hidden">Chat Penjual</a>
-                        </div>
-                    </div>
 
+                            @for($i = 0;$i < count($gambar); $i++) @if($i===0) <div class="carousel-item active">
+                                <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
+                        </div>
+                        @else
+                        <div class="carousel-item">
+                            <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
+                        </div>
+                        @endif
+
+                        @endfor
+
+
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <div class="col">
-                    <div class="card mt-5 border-0">
-                        <div class="card-body">
-                            <h3 class="card-title">{{$product->nama}}</h3>
-                            <p class="card-subtitle mb-2 text-muted">{{$kategori[0]->nama_kategori}}</p>
-                            <p class="card-text">{{$product->keterangan}}</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
+                <<<<<<< HEAD <div class="row" style="margin-bottom: 10px">
+                    <div class="col-md-4">
+                        <a href="/pesan/{{$product->id_user}}" class="btn btn-success" style="background-color: #65587f; border: hidden">Chat Penjual</a>
+                    </div>
+            </div>
+            =======
+            >>>>>>> a8bee44310ed8ccfa86aa770a2eab65299e35e02
 
-                            <li class="list-group-item" id="harga_produk" value="{{$product->harga_produk}}"><small class="text-muted">Harga produk:
-                                </small>Rp.{{$product->harga_produk}}</li>
-                            <li class="list-group-item" id="harga_jasa" value="{{$product->harga_jasa}}"><small class="text-muted">Harga jasa:
-                                </small>Rp.{{$product->harga_jasa}}</li>
-                            <li class="list-group-item"><small class="text-muted">Jenis produk:
-                                </small>{{$product->jenis_produk}}</li>
-                            <li class="list-group-item"><small class="text-muted">Stok: </small>{{$product->stok}}</li>
-                            <li class="list-group-item"><small class="text-muted">Berat: </small>{{$product->berat}} Kg
-                            </li>
+        </div>
+        <div class="col">
+            <div class="card mt-5 border-0">
+                <div class="card-body">
+                    <h3 class="card-title">{{$product->nama}}</h3>
+                    <p class="card-subtitle mb-2 text-muted">{{$kategori[0]->nama_kategori}}</p>
+                    <p class="card-text">{{$product->keterangan}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
 
+                    <li class="list-group-item" id="harga_produk" value="{{$product->harga_produk}}"><small class="text-muted">Harga produk:
+                        </small>Rp.{{$product->harga_produk}}</li>
+                    <li class="list-group-item" id="harga_jasa" value="{{$product->harga_jasa}}"><small class="text-muted">Harga jasa:
+                        </small>Rp.{{$product->harga_jasa}}</li>
+                    <li class="list-group-item"><small class="text-muted">Jenis produk:
+                        </small>{{$product->jenis_produk}}</li>
+                    <li class="list-group-item"><small class="text-muted">Stok: </small>{{$product->stok}}</li>
+                    <li class="list-group-item"><small class="text-muted">Berat: </small>{{$product->berat}} Kg
+                    </li>
+
+                    <<<<<<< HEAD <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small class="text-muted">Asal Pengiriman:
+                            =======
                             <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small class="text-muted">Asal Pengiriman:
+                                    >>>>>>> a8bee44310ed8ccfa86aa770a2eab65299e35e02
                                 </small>Rp.{{$product->asal_pengiriman}}</li>
-                        </ul>
+                </ul>
 
-                        <div class="card-body">
-                            <form method="POST" action="/order/confirm">
-                                @csrf
+                <div class="card-body">
+                    <form method="POST" action="/order/confirm">
+                        @csrf
+                        <<<<<<< HEAD <input type="text" hidden class="form-control" id="id_produk" name="id_produk" value="{{$product->id}}">
+                            <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli" value="{{Auth::user()->id}}">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Jumlah Pembelian</label>
+                                <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian" value="1" min="1" max="{{$product->stok}}">
+                                =======
                                 <input type="text" hidden class="form-control" id="id_produk" name="id_produk" value="{{$product->id}}">
                                 <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli" value="{{Auth::user()->id}}">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Jumlah Pembelian</label>
                                     <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian" value="1" min="1" max="{{$product->stok}}">
+                                    >>>>>>> a8bee44310ed8ccfa86aa770a2eab65299e35e02
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Pembeli</label>
@@ -100,17 +121,17 @@
 
                                 </div>
                                 <button type="submit" class="btn btn-success d-block">Beli</button>
-                            </form>
-                        </div>
-                        <div class="card-body">
+                    </form>
+                </div>
+                <div class="card-body">
 
 
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 </div>
 
