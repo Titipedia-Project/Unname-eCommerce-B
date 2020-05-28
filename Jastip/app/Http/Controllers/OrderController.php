@@ -107,11 +107,11 @@ class OrderController extends Controller
     public function show($id)
     {   
         $id_user = $id;
-        $orders = DB::table('orders')
-            ->where('orders.id_user', '=', $id)
-            ->join('products', 'products.id', '=', 'orders.id_produk')
+        $orders = DB::table('preorders')
+            ->where('preorders.id_user', '=', $id)
+            ->join('products', 'products.id', '=', 'preorders.id_produk')
             ->join('kategoris', 'products.id_kategori', '=', 'kategoris.id')
-            ->latest('orders.created_at')->get();
+            ->latest('preorders.created_at')->get();
         //$ordsers = DB::table('orders')->where('id_user', '=', $id)->get();
         return view('pages.order.show', compact('orders'));
     }
