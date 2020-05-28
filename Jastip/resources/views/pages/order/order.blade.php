@@ -9,25 +9,37 @@
             <div class="row">
                 <div class="col">
                     @csrf
-                    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            @foreach ($gambar as $item)
-                          <div class="carousel-item active" data-interval="10000">
-                            <img src="{{asset('produk_images/'.$item->url)}}" class="d-block w-100" alt="...">
-                          </div>
-                          @endforeach
+                            
+                            @for($i = 0;$i < count($gambar); $i++)
+                            @if($i === 0)
+                            <div class="carousel-item active">
+                                <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
+                            </div>
+                            @else
+                            <div class="carousel-item">
+                                <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
+                            </div>
+                            @endif
+                            
+                            @endfor
+                            
+
+
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
                         </a>
-                      </div>
-                    
-                    
+                    </div>
+
                 </div>
                 <div class="col">
                     <div class="card mt-5 border-0">
@@ -41,28 +53,31 @@
                             <li class="list-group-item" id="harga_produk" value="{{$product->harga_produk}}"><small
                                     class="text-muted">Harga produk:
                                 </small>Rp.{{$product->harga_produk}}</li>
-                            <li class="list-group-item" id="harga_jasa" value="{{$product->harga_jasa}}"><small class="text-muted">Harga jasa:
+                            <li class="list-group-item" id="harga_jasa" value="{{$product->harga_jasa}}"><small
+                                    class="text-muted">Harga jasa:
                                 </small>Rp.{{$product->harga_jasa}}</li>
                             <li class="list-group-item"><small class="text-muted">Jenis produk:
                                 </small>{{$product->jenis_produk}}</li>
                             <li class="list-group-item"><small class="text-muted">Stok: </small>{{$product->stok}}</li>
                             <li class="list-group-item"><small class="text-muted">Berat: </small>{{$product->berat}} Kg
                             </li>
-                          
+
                             <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small
-                                class="text-muted">Asal Pengiriman:
-                            </small>Rp.{{$product->asal_pengiriman}}</li>
+                                    class="text-muted">Asal Pengiriman:
+                                </small>Rp.{{$product->asal_pengiriman}}</li>
                         </ul>
 
                         <div class="card-body">
                             <form method="POST" action="/order/confirm">
                                 @csrf
-                            <input type="text" hidden class="form-control" id="id_produk" name="id_produk" value="{{$product->id}}">
-                                <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli" value="{{Auth::user()->id}}">
+                                <input type="text" hidden class="form-control" id="id_produk" name="id_produk"
+                                    value="{{$product->id}}">
+                                <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli"
+                                    value="{{Auth::user()->id}}">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Jumlah Pembelian</label>
                                     <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian"
-                                       value="1" min="1" max="{{$product->stok}}">
+                                        value="1" min="1" max="{{$product->stok}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Pembeli</label>
@@ -75,7 +90,7 @@
                                         name="alamat_pengiriman" value="{{Auth::user()->alamat}}"
                                         aria-describedby="emailHelp">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kota Pengiriman</label>
                                     <select class="form-control" id="kab_id" name="kab_id">
@@ -97,15 +112,15 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label >Total</label>
+                                    <label>Total</label>
                                     <h2 id="totalHarga"></h2>
-                                    
+
                                 </div>
                                 <button type="submit" class="btn btn-success d-block">Beli</button>
                             </form>
                         </div>
                         <div class="card-body">
-                           
+
 
                         </div>
                     </div>
