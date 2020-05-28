@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Pesan;
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class PesanController extends Controller
 {
@@ -15,6 +17,7 @@ class PesanController extends Controller
     public function index()
     {
         //
+        return view('pages.message.pesan');
     }
 
     /**

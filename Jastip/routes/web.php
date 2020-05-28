@@ -48,7 +48,10 @@ Route::get('/Profile/{profile}/edit', 'UserController@edit');
 //topup
 Route::get('/topup', 'Mutasi_SaldosController@index');
 Route::post('/tambahsaldo', 'Mutasi_SaldosController@store');
-Route::post('/tariksaldo', 'Mutasi_SaldosController@update');
+Route::post('/tariksaldo', 'Mutasi_SaldosController@withdraw');
+
+//pesan
+Route::get('/pesan', 'PesanController@index');
 
 //Order
 Route::get('/order/{product}', 'OrderController@showProduk');
