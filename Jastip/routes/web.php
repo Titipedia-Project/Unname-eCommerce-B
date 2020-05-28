@@ -52,6 +52,7 @@ Route::post('/tariksaldo', 'Mutasi_SaldosController@withdraw');
 
 //pesan
 Route::get('/pesan', 'PesanController@index');
+Route::get('/pesan/{pesan}', 'PesanController@chat');
 
 //Order
 Route::get('/order/{product}', 'OrderController@showProduk');
