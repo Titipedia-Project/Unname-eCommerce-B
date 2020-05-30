@@ -8,22 +8,31 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    @csrf
+                    
+                    
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             
-                            @for($i = 0;$i < count($gambar); $i++)
-                            @if($i === 0)
-                            <div class="carousel-item active">
-                                <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
-                            </div>
-                            @else
-                            <div class="carousel-item">
-                                <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
-                            </div>
-                            @endif
-                            
-                            @endfor
+                            @csrf
+                    @if(count($gambar) <= 1) {
+                        <div class="carousel-item active">
+                            <img src="{{asset('produk_images/'.$gambar[0]->url)}}" class="d-block w-100" alt="...">
+                        </div>
+                    }
+                    @else
+                        @for($i = 0;$i < count($gambar); $i++)
+                        @if($i === 0)
+                        <div class="carousel-item active">
+                            <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
+                        </div>
+                        @else
+                        <div class="carousel-item">
+                            <img src="{{asset('produk_images/'.$gambar[$i]->url)}}" class="d-block w-100" alt="...">
+                        </div>
+                        @endif
+                        
+                        @endfor
+                    @endif
                             
 
 
@@ -39,7 +48,7 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-
+                
                 </div>
                 <div class="col">
                     <div class="card mt-5 border-0">

@@ -1,4 +1,4 @@
-@extends('layouts.profileview')
+@extends('layouts.productview')
 @section('content')
 <div class="container mt-4">
     <div class="card">
