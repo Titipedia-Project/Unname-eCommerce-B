@@ -44,7 +44,6 @@ class PesanController extends Controller
      */
     public function store(Request $request)
     {
-        //
         Pesan::create([
             'id_pengirim' => Auth::user()->id,
             'id_penerima' => $request->id_penerima,
@@ -52,17 +51,7 @@ class PesanController extends Controller
             'waktu_kirim' => date("Y-m-d H:i:s"),
             'dibaca' => 'belum'
         ]);
-        //return redirect()->route('pesan', [$request->id_penerima]);
-        // return redirect()->action(
-        //     'PesanController@roomchat',
-        //     ['pesan' => $request->id_penerima]
-        // );
-        $url = route('pesan', ['pesan' => $request->id_penerima]);
-        return redirect($url);
-        //return redirect()->route('pesan', $request->id_penerima);
-        // route::patch('pesan/{pesan}', function ($request) {
-        //     return 'pesan' . $request->id_penerima;
-        // });
+        return redirect()->back();
     }
 
     /**
@@ -109,14 +98,14 @@ class PesanController extends Controller
         //
         $pesan = DB::table('pesans')
             ->where('id_penerima', Auth::user()->id)
-            ->orWhere('id_penerima', $request->id_user)
+            ->orWhere('id_penerima', $request->pesan)
             ->where('id_pengirim', Auth::user()->id)
-            ->orWhere('id_pengirim', $request->id_user)->get();
+            ->orWhere('id_pengirim', $request->pesan)->get();
 
         $user1 = DB::table('users')
             ->where('id', Auth::user()->id)->get();
         $user2 = DB::table('users')
-            ->where('id', $request->id_user)->get();
+            ->where('id', $request->pesan)->get();
         //dd($user2);
         return view('pages.message.pesan', compact('pesan', 'user1', 'user2'));
     }

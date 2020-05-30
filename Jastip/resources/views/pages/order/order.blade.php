@@ -38,12 +38,7 @@
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <div class="col-md-4">
-                        <form action="/pesan/{{$product->id_user}}" enctype="multipart/form-data" method="post">
-
-                            @csrf
-                            <div>
-                                <input type="text" hidden name="id_user" value="{{$product->id_user}}">
-                            </div>
+                        <form action="/pesan/{{$product->id_user}}" enctype="multipart/form-data" method="get">
                             <button type="submit" class="badge badge-danger">Chat Penjual</button>
                         </form>
                     </div>
