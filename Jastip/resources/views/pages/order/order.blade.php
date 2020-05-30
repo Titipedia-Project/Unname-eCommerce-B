@@ -8,7 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    @csrf
+                    
+                    
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
 
