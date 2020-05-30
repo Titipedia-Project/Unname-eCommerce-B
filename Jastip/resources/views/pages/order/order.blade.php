@@ -8,8 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    
-                    
+
+
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
 
@@ -36,64 +36,76 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                <<<<<<< HEAD <div class="row" style="margin-bottom: 10px">
+                <div class="row" style="margin-bottom: 10px">
                     <div class="col-md-4">
-                        <a href="/pesan/{{$product->id_user}}" class="btn btn-success" style="background-color: #65587f; border: hidden">Chat Penjual</a>
+                        <a href="/pesan/{{$product->id_user}}" class="btn btn-success"
+                            style="background-color: #65587f; border: hidden">Chat Penjual</a>
                     </div>
-            </div>
-            =======
-            >>>>>>> a8bee44310ed8ccfa86aa770a2eab65299e35e02
-
-        </div>
-        <div class="col">
-            <div class="card mt-5 border-0">
-                <div class="card-body">
-                    <h3 class="card-title">{{$product->nama}}</h3>
-                    <p class="card-subtitle mb-2 text-muted">{{$kategori[0]->nama_kategori}}</p>
-                    <p class="card-text">{{$product->keterangan}}</p>
                 </div>
-                <ul class="list-group list-group-flush">
 
-                    <li class="list-group-item" id="harga_produk" value="{{$product->harga_produk}}"><small class="text-muted">Harga produk:
-                        </small>Rp.{{$product->harga_produk}}</li>
-                    <li class="list-group-item" id="harga_jasa" value="{{$product->harga_jasa}}"><small class="text-muted">Harga jasa:
-                        </small>Rp.{{$product->harga_jasa}}</li>
-                    <li class="list-group-item"><small class="text-muted">Jenis produk:
-                        </small>{{$product->jenis_produk}}</li>
-                    <li class="list-group-item"><small class="text-muted">Stok: </small>{{$product->stok}}</li>
-                    <li class="list-group-item"><small class="text-muted">Berat: </small>{{$product->berat}} Kg
-                    </li>
+            </div>
+            <div class="col">
+                <div class="card mt-5 border-0">
+                    <div class="card-body">
+                        <h3 class="card-title">{{$product->nama}}</h3>
+                        <p class="card-subtitle mb-2 text-muted">{{$kategori[0]->nama_kategori}}</p>
+                        <p class="card-text">{{$product->keterangan}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
 
-                    <<<<<<< HEAD <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small class="text-muted">Asal Pengiriman:
-                            =======
-                            <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small class="text-muted">Asal Pengiriman:
-                                    >>>>>>> a8bee44310ed8ccfa86aa770a2eab65299e35e02
-                                </small>Rp.{{$product->asal_pengiriman}}</li>
-                </ul>
+                        <li class="list-group-item" id="harga_produk" value="{{$product->harga_produk}}"><small
+                                class="text-muted">Harga produk:
+                            </small>Rp.{{$product->harga_produk}}</li>
+                        <li class="list-group-item" id="harga_jasa" value="{{$product->harga_jasa}}"><small
+                                class="text-muted">Harga jasa:
+                            </small>Rp.{{$product->harga_jasa}}</li>
+                        <li class="list-group-item"><small class="text-muted">Jenis produk:
+                            </small>{{$product->jenis_produk}}</li>
+                        <li class="list-group-item"><small class="text-muted">Stok: </small>{{$product->stok}}</li>
+                        <li class="list-group-item"><small class="text-muted">Berat: </small>{{$product->berat}} Kg
+                        </li>
 
-                <div class="card-body">
-                    <form method="POST" action="/order/confirm">
-                        @csrf
-                        <<<<<<< HEAD <input type="text" hidden class="form-control" id="id_produk" name="id_produk" value="{{$product->id}}">
-                            <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli" value="{{Auth::user()->id}}">
+                        <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small
+                                class="text-muted">Asal Pengiriman:
+
+                        <li class="list-group-item" id="asal" value="{{$product->asal_pengiriman}}"><small
+                                class="text-muted">Asal Pengiriman:
+
+                            </small>Rp.{{$product->asal_pengiriman}}</li>
+                    </ul>
+
+                    <div class="card-body">
+                        <form method="POST" action="/order/confirm">
+                            @csrf
+                            <input type="text" hidden class="form-control" id="id_produk" name="id_produk"
+                                value="{{$product->id}}">
+                            <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli"
+                                value="{{Auth::user()->id}}">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jumlah Pembelian</label>
-                                <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian" value="1" min="1" max="{{$product->stok}}">
-                                =======
-                                <input type="text" hidden class="form-control" id="id_produk" name="id_produk" value="{{$product->id}}">
-                                <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli" value="{{Auth::user()->id}}">
+                                <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian"
+                                    value="1" min="1" max="{{$product->stok}}">
+
+                                <input type="text" hidden class="form-control" id="id_produk" name="id_produk"
+                                    value="{{$product->id}}">
+                                <input type="text" hidden class="form-control" id="id_pembeli" name="id_pembeli"
+                                    value="{{Auth::user()->id}}">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Jumlah Pembelian</label>
-                                    <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian" value="1" min="1" max="{{$product->stok}}">
-                                    >>>>>>> a8bee44310ed8ccfa86aa770a2eab65299e35e02
+                                    <input type="number" class="form-control" id="stok_pembelian" name="stok_pembelian"
+                                        value="1" min="1" max="{{$product->stok}}">
+
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Pembeli</label>
-                                    <input type="text" class="form-control" id="nama" name="nama_pembeli" value="{{Auth::user()->name}}" aria-describedby="emailHelp">
+                                    <input type="text" class="form-control" id="nama" name="nama_pembeli"
+                                        value="{{Auth::user()->name}}" aria-describedby="emailHelp">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Alamat Pengiriman</label>
-                                    <input type="text" class="form-control" id="alamat_pengiriman" name="alamat_pengiriman" value="{{Auth::user()->alamat}}" aria-describedby="emailHelp">
+                                    <input type="text" class="form-control" id="alamat_pengiriman"
+                                        name="alamat_pengiriman" value="{{Auth::user()->alamat}}"
+                                        aria-describedby="emailHelp">
                                 </div>
 
                                 <div class="form-group">
@@ -122,16 +134,16 @@
 
                                 </div>
                                 <button type="submit" class="btn btn-success d-block">Beli</button>
-                    </form>
-                </div>
-                <div class="card-body">
+                        </form>
+                    </div>
+                    <div class="card-body">
 
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>
 </div>
@@ -195,10 +207,7 @@
             localStorage.setItem('harga', hargaBaru);
             $('#totalHarga').html('');
             $('#totalHarga').append('<h3>Rp.' + localStorage.getItem('harga') + '</h3><input type="hidden" class="form-control" name="hargaTotalnya" id="totalHargaH3" value="' + localStorage.getItem('harga') + '">');
-
         });
-
-
     });
 </script>
 @stop

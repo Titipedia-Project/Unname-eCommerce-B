@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\User;
+use App\gambar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Contracts\DataTable;
@@ -64,7 +65,6 @@ class ProductsController extends Controller
         //validation
         $request->validate([
             'nama_produk' => 'required',
-            'jenis_produk' => 'required',
             'stok' => 'required',
             'harga_jasa' => 'required',
             'harga_produk' => 'required',
@@ -72,10 +72,28 @@ class ProductsController extends Controller
             'gambar' => 'required'
         ]);
 
-        //penamaan gambar/foto
-        $id = DB::table('products')->orderBy('id', 'desc')->first()->id + 1;
-        $request->file('gambar')->move("produk_images/", strval($id) . "_produk.jpg"); //penamaan yg bukan array, penamaan array ada di registercontroller
-        $filename = $id . '_produk.jpg';
+        //get last id from product
+        $product = DB::table('products')->orderBy('id', 'desc')->first();
+        $id = $product->id;
+
+        $str = "Hello world. It's a beautiful day.";
+        print_r (explode(" ",$str));
+        
+
+        if ($request->hasFile('gambar')) {
+            $identity = 0;
+            foreach($request->file('gambar') as $image) {
+                $filename = $image->getClientOriginalName();
+                $extensionTemp = explode(".", $filename);
+                $extension = $extensionTemp[count($extensionTemp) - 1]; 
+                $image->move("produk_images/", strval($id+1) . "_produk" . strval($identity) . "." . $extension); //penamaan yg bukan array, penamaan array ada di registercontroller
+                gambar::create([
+                    'url' => strval($id+1) . "_produk" . strval($identity) . "." . $extension,
+                    'id_produk' => $id+1
+                ]);
+                $identity++;
+            }
+        }
         //cara 1
         // $product = new Product;
         // $product->nama = $request->nama_produk;
@@ -91,16 +109,16 @@ class ProductsController extends Controller
         //cara 2
         Product::create([
             'nama' => $request->nama_produk,
-            'jenis_produk' => $request->jenis_produk,
             'stok' => $request->stok,
             'harga_jasa' => $request->harga_jasa,
             'harga_produk' => $request->harga_produk,
             'berat' => $request->berat,
             'keterangan' => $request->keterangan,
             'id_user' => $request->id_user,
-            'id_kategori' => $request->nama_kategori,
-            'gambar' => $filename
+            'id_kategori' => $request->nama_kategori
         ]);
+
+       
         //cara 3
         //Product::create($request->all());//all akan mengambil semua data fillable yang ada di model product
         return redirect('produk')->with('status', 'Data Berhasil Ditambahkan!');
@@ -173,10 +191,11 @@ class ProductsController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product, gambar $gambar)
     {
         //
         Product::destroy($product->id);
+        gambar::destroy($gambar->id_produk);
         return redirect('produk')->with('status', 'Data Produk Berhasil Dihapus!');
     }
 }

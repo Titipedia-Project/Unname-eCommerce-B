@@ -40,9 +40,7 @@
 
                         <a class="dropdown-item" href="/profile">Profile</a>
                         <a class="dropdown-item" href="/produk">Produk & Request</a>
-                        <a class="dropdown-item" href="/order/daftar_pembelian_preorder/{{Auth::user()->id}}">Pre-Order
-                            List</a>
-                        <a class="dropdown-item" href="/produk">Request List</a>
+                        <a class="dropdown-item" href="/order/daftar_pembelian_preorder/{{Auth::user()->id}}">Pembelian</a>
                         <a class="dropdown-item" href="/topup">Top Up Saldo</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

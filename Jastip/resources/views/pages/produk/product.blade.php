@@ -30,7 +30,6 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Produk</th>
-                            <th>Jenis Produk</th>
                             <th>Stok</th>
                             <th>Harga Jasa</th>
                             <th>Harga Produk</th>
@@ -43,7 +42,6 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$data->nama}}</td>
-                            <td>{{$data->jenis_produk}}</td>
                             <td>{{$data->stok}}</td>
                             <td>{{$data->harga_jasa}}</td>
                             <td>{{$data->harga_produk}}</td>
