@@ -138,7 +138,6 @@
                     </div>
                     <div class="card-body">
 
-
                     </div>
                 </div>
             </div>
@@ -189,9 +188,6 @@
                     $('#totalHarga').append('<h3>Rp.' + localStorage.getItem('harga') + '</h3><input type="hidden" class="form-control" name="hargaTotalnya" id="totalHargaH3" value="' + localStorage.getItem('harga') + '">');
 
                 });
-
-
-
         });
         $('#tipeService').on('change', function(e) {
             var hargaOngkirLama = localStorage.getItem('biayaOngkir');
@@ -201,9 +197,7 @@
             alert(biayaOngkirBaru1);
             var biayaOngkirBaru = biayaOngkirBaru1.split(",")[0];
             localStorage.setItem('biayaOngkir', biayaOngkirBaru);
-
             var hargaBaru = Number(biayaOngkirBaru) + Number(hargaSementara);
-
             localStorage.setItem('harga', hargaBaru);
             $('#totalHarga').html('');
             $('#totalHarga').append('<h3>Rp.' + localStorage.getItem('harga') + '</h3><input type="hidden" class="form-control" name="hargaTotalnya" id="totalHargaH3" value="' + localStorage.getItem('harga') + '">');

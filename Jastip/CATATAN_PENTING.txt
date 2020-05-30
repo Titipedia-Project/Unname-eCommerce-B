@@ -39,3 +39,18 @@ Error :
 ----------------///revisi progam Product//------------------
 Revisi :
         - Tambahkan asal pengiriman di create dan edit serta model
+
+
+
+
+
+ <form class="mx-2 my-auto d-block w-100">
+            <div class="input-group">
+                <input type="text" class="form-control border border-right-0" placeholder="Search here...">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary border border-left-0 bg-light" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
