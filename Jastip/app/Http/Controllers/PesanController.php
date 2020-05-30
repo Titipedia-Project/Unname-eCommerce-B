@@ -6,6 +6,7 @@ use App\Pesan;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class PesanController extends Controller
 {
@@ -26,6 +27,10 @@ class PesanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+        //
+    }
+    public function chat()
     {
         //
     }
