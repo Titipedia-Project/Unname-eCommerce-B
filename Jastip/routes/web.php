@@ -52,7 +52,12 @@ Route::post('/tariksaldo', 'Mutasi_SaldosController@withdraw');
 
 //pesan
 Route::get('/pesan', 'PesanController@index');
-Route::get('/pesan/{pesan}', 'PesanController@chat');
+// Route::get('/pesan/{pesan}', function ($pesan) {
+//     return back()->withInput();
+// });
+Route::post('/pesan/{pesan}', 'PesanController@roomchat');
+Route::get('/pesan/{pesan}/update', 'PesanController@roomchat')->name('pesan');
+Route::post('/kirim', 'PesanController@store');
 
 //Order
 Route::get('/order/{product}', 'OrderController@showProduk');
