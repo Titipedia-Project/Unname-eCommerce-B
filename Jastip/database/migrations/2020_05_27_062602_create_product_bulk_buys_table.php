@@ -13,9 +13,21 @@ class CreateProductBulkBuysTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_bulk_buys', function (Blueprint $table) {
+        Schema::create('produk_bulk_buys', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nama');
+            $table->integer('minimum_target');
+            $table->integer('maximum_target');
+            $table->integer('harga_jasa');
+            $table->integer('harga_produk');
+            $table->integer('berat');
+            $table->string('keterangan')->nullable();
+            $table->string('asal_pengiriman');
+            $table->integer('id_user');
+            $table->integer('id_kategori');
+            $table->date('batas_waktu');
+            $table->enum('status', ['menunggu', 'diproses']);
         });
     }
 

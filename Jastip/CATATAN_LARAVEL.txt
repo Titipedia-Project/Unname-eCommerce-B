@@ -1,0 +1,9 @@
+
+----------------//Set Halaman dengan Login dan Tanpa Login dengan Middleware//-------------------
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+
+public function __construct()
+    {
+        $this->middleware('auth');
+    }
+(code diatas diletakan di controller masing-masing)

@@ -4,7 +4,7 @@
 <div class="row">
 
 
-    @if ($cek === 'room')
+    @if ($cek === 'user')
     <div class="col-sm">
         <div class="card">
             <div class="card-body">
@@ -25,41 +25,30 @@
                             <div class="box-body">
                                 <!-- Conversations are loaded here -->
                                 <div class="direct-chat-messages">
-                                    @foreach($pesan as $data)
                                     <!-- Message. Default to the left -->
-                                    @if ($data->id_pengirim === Auth::user()->id)
                                     <!-- Message. Default to the left -->
                                     <div class="direct-chat-msg">
                                         <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-left"><?= $user1->first()->name; ?></span>
-                                            <span class="direct-chat-timestamp pull-right">{{$data->waktu_kirim}}</span>
+                                            <span class="direct-chat-name pull-left"></span>
+                                            <span class="direct-chat-timestamp pull-right"></span>
                                         </div>
                                         <!-- /.direct-chat-info -->
-                                        <img class="direct-chat-img" src="{{ asset('photo_profile/'.Auth::user()->foto)}}" alt="Message User Image"><!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text">
-                                            {{$data->isi_pesan}}
-                                        </div>
+
 
                                         <!-- /.direct-chat-text -->
                                     </div>
                                     <!-- /.direct-chat-msg -->
-                                    @else
                                     <!-- Message to the right -->
                                     <div class="direct-chat-msg right">
                                         <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-right"><?= $user2->first()->name; ?></span>
-                                            <span class="direct-chat-timestamp pull-left">{{$data->waktu_kirim}}</span>
+                                            <span class="direct-chat-name pull-right"></span>
+                                            <span class="direct-chat-timestamp pull-left"></span>
                                         </div>
                                         <!-- /.direct-chat-info -->
-                                        <img class="direct-chat-img" src="{{ asset('photo_profile/'.Auth::user()->foto)}}" alt="Message User Image"><!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text">
-                                            {{$data->isi_pesan}}
-                                        </div>
+
                                         <!-- /.direct-chat-text -->
                                     </div>
-                                    @endif
                                     <!-- /.direct-chat-msg -->
-                                    @endforeach
                                 </div>
                                 <!--/.direct-chat-messages-->
 
@@ -68,13 +57,13 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <form action="/kirim" enctype="multipart/form-data" method="post">
-                                    @csrf
+                                <form action="" enctype="multipart/form-data" method="post">
+
                                     <div class="input-group">
                                         <input type="text" name="isi_pesan" placeholder="Type Message ..." class="form-control" required>
-                                        <input type="hidden" name="id_penerima" value="{{$user2->first()->id}}" />
+                                        <input type="hidden" name="id_penerima" value="" />
                                         <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                                            <button disabled type="submit" class="btn btn-primary btn-flat">Send</button>
                                         </span>
                                     </div>
                                 </form>
